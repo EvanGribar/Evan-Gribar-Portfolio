@@ -2,7 +2,7 @@
 
 A high-performance, cinematic portfolio exploring the intersection of business analytics, technology, and design.
 
-![Portfolio Preview](public/preview.png)
+![Portfolio Preview](<Screenshot 2026-01-20 175814.png>)
 
 ## Overview
 

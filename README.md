@@ -50,4 +50,4 @@ Built with a focus on performance and visual fidelity:
 *   **Focus**: MIS, Business Analytics, Consulting
 
 ---
-© 2024 Evan Gribar. All Rights Reserved.
+© 2026 Evan Gribar. All Rights Reserved.

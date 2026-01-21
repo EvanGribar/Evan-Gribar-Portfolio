@@ -2,6 +2,7 @@
   "name": "evan-gribar-portfolio",
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://EvanGribar.github.io/Evan-Gribar-Portfolio",
   "description": "Creative Developer Portfolio",
   "author": "Evan Gribar",
   "type": "module",

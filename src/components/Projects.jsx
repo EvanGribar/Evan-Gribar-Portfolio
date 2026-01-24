@@ -38,7 +38,7 @@ export default function Projects() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
                     <motion.div
                         className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0b132b] via-[#1b2a4a] to-[#9E1B32] border border-white/10 shadow-2xl"
                         initial={{ opacity: 0, y: 30 }}
@@ -47,37 +47,37 @@ export default function Projects() {
                         transition={{ duration: 0.9 }}
                     >
                         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_20%_20%,#ffffff,transparent_25%),radial-gradient(circle_at_80%_0%,#ffffff,transparent_20%)]" />
-                        <div className="relative p-10 space-y-8">
-                            <div className="flex items-center gap-4">
-                                <span className="px-3 py-1 text-xs uppercase tracking-[0.2em] bg-white/10 border border-white/20 rounded-full text-gray-100">Featured</span>
-                                <p className="text-sm text-gray-200/80">Live product</p>
+                        <div className="relative p-6 md:p-10 space-y-6 md:space-y-8">
+                            <div className="flex items-center gap-3 md:gap-4">
+                                <span className="px-3 py-1 text-[10px] md:text-xs uppercase tracking-[0.2em] bg-white/10 border border-white/20 rounded-full text-gray-100">Featured</span>
+                                <p className="text-xs md:text-sm text-gray-200/80">Live product</p>
                             </div>
                             <div className="space-y-3">
-                                <p className="text-sm uppercase tracking-[0.2em] text-gray-300/80">{featuredProject.subtitle}</p>
-                                <h3 className="text-4xl md:text-5xl font-bold tracking-tight">{featuredProject.title}</h3>
-                                <p className="text-lg text-gray-200/90 max-w-3xl">{featuredProject.description}</p>
+                                <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gray-300/80">{featuredProject.subtitle}</p>
+                                <h3 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">{featuredProject.title}</h3>
+                                <p className="text-base md:text-lg text-gray-200/90 max-w-3xl">{featuredProject.description}</p>
                             </div>
-                            <div className="flex flex-wrap gap-3">
+                            <div className="flex flex-wrap gap-2.5 md:gap-3">
                                 {featuredProject.tags.map((tag) => (
-                                    <span key={tag} className="px-3 py-2 rounded-full text-sm bg-white/10 border border-white/10 text-gray-100">
+                                    <span key={tag} className="px-3 py-2 rounded-full text-xs md:text-sm bg-white/10 border border-white/10 text-gray-100">
                                         {tag}
                                     </span>
                                 ))}
                             </div>
-                            <div className="grid grid-cols-3 gap-4 text-center">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 text-center">
                                 {featuredProject.metrics.map((item) => (
                                     <div key={item.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
-                                        <p className="text-2xl font-semibold text-white">{item.value}</p>
-                                        <p className="text-xs uppercase tracking-[0.2em] text-gray-300 mt-1">{item.label}</p>
+                                        <p className="text-xl md:text-2xl font-semibold text-white">{item.value}</p>
+                                        <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-300 mt-1">{item.label}</p>
                                     </div>
                                 ))}
                             </div>
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                                 <a
                                     href={featuredProject.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-sm font-semibold uppercase tracking-[0.2em] shadow-lg hover:shadow-xl transition-shadow"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-black text-sm font-semibold uppercase tracking-[0.2em] shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto"
                                 >
                                     View MagicPark AI
                                     <span aria-hidden>→</span>
@@ -86,7 +86,7 @@ export default function Projects() {
                                     href={`${featuredProject.link}dashboard`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/40 text-white text-sm font-semibold uppercase tracking-[0.2em] hover:bg-white/10 transition-colors"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-white/40 text-white text-sm font-semibold uppercase tracking-[0.2em] hover:bg-white/10 transition-colors w-full sm:w-auto"
                                 >
                                     Try the live dashboard
                                 </a>

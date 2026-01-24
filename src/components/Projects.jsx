@@ -1,59 +1,129 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 
-// Generic "Locked" projects
-const projects = [
-    { id: 1, title: 'Project One', category: 'Locked', color: 'from-gray-800 to-gray-900' },
-    { id: 2, title: 'Project Two', category: 'Locked', color: 'from-gray-800 to-gray-900' },
-    { id: 3, title: 'Project Three', category: 'Locked', color: 'from-gray-800 to-gray-900' },
-    { id: 4, title: 'Project Four', category: 'Locked', color: 'from-gray-800 to-gray-900' },
+const featuredProject = {
+    title: 'MagicPark AI',
+    subtitle: 'AI-powered theme park intelligence suite',
+    description:
+        'Live wait times, predictive crowd models, dynamic route optimization, and supabase-backed upgrades that help visitors reclaim hours in the park.',
+    tags: ['AI Wait Time Predictions', 'Crowd Heat Maps', 'Dynamic Trip Optimizer', 'Supabase Integration'],
+    metrics: [
+        { label: 'Avg time saved', value: '4.2h' },
+        { label: 'Prediction accuracy', value: '95%' },
+        { label: 'Happy travelers', value: '50k+' },
+    ],
+    link: 'https://evangribar.github.io/MagicParkAI/',
+}
+
+const roadmapProjects = [
+    { id: 1, title: 'Coming Soon', note: 'Stay tuned for new projects and developments.' },
+    { id: 2, title: 'Coming Soon', note: 'Stay tuned for new projects and developments.' },
+    { id: 3, title: 'Coming Soon', note: 'Stay tuned for new projects and developments.' },
 ]
 
 export default function Projects() {
     return (
         <section id="projects" className="py-20 text-white relative z-10">
             <div className="container mx-auto px-6">
-                <motion.h2
-                    className="text-5xl font-bold mb-16 text-center tracking-tight"
-                    initial={{ opacity: 0, y: 50 }}
+                <motion.div
+                    className="text-center mb-12"
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    Current Projects
-                </motion.h2>
+                    <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Current Projects</p>
+                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight">Building real-world tools</h2>
+                    <p className="text-gray-400 mt-4 text-lg max-w-3xl mx-auto">
+                        Product work that blends strategy, AI, and experience design. Featured below; more shipping soon.
+                    </p>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {projects.map((project) => (
-                        <motion.div
-                            key={project.id}
-                            className="group relative"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <div className="overflow-hidden rounded-lg mb-6 bg-black/60 backdrop-blur-md border border-white/5 aspect-[4/3] relative flex items-center justify-center">
-                                {/* Locked Overlay */}
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-
-                                {/* Lock Icon & Text */}
-                                <div className="text-center z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                                    <svg className="w-12 h-12 mx-auto mb-4 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                    </svg>
-                                    <span className="text-xl font-light tracking-[0.2em] uppercase text-gray-400 group-hover:text-white transition-colors">
-                                        Coming Soon
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-stretch">
+                    <motion.div
+                        className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0b132b] via-[#1b2a4a] to-[#9E1B32] border border-white/10 shadow-2xl"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9 }}
+                    >
+                        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_20%_20%,#ffffff,transparent_25%),radial-gradient(circle_at_80%_0%,#ffffff,transparent_20%)]" />
+                        <div className="relative p-10 space-y-8">
+                            <div className="flex items-center gap-4">
+                                <span className="px-3 py-1 text-xs uppercase tracking-[0.2em] bg-white/10 border border-white/20 rounded-full text-gray-100">Featured</span>
+                                <p className="text-sm text-gray-200/80">Live product</p>
+                            </div>
+                            <div className="space-y-3">
+                                <p className="text-sm uppercase tracking-[0.2em] text-gray-300/80">{featuredProject.subtitle}</p>
+                                <h3 className="text-4xl md:text-5xl font-bold tracking-tight">{featuredProject.title}</h3>
+                                <p className="text-lg text-gray-200/90 max-w-3xl">{featuredProject.description}</p>
+                            </div>
+                            <div className="flex flex-wrap gap-3">
+                                {featuredProject.tags.map((tag) => (
+                                    <span key={tag} className="px-3 py-2 rounded-full text-sm bg-white/10 border border-white/10 text-gray-100">
+                                        {tag}
                                     </span>
-                                </div>
+                                ))}
                             </div>
+                            <div className="grid grid-cols-3 gap-4 text-center">
+                                {featuredProject.metrics.map((item) => (
+                                    <div key={item.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                                        <p className="text-2xl font-semibold text-white">{item.value}</p>
+                                        <p className="text-xs uppercase tracking-[0.2em] text-gray-300 mt-1">{item.label}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex flex-wrap gap-4">
+                                <a
+                                    href={featuredProject.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-sm font-semibold uppercase tracking-[0.2em] shadow-lg hover:shadow-xl transition-shadow"
+                                >
+                                    View MagicPark AI
+                                    <span aria-hidden>→</span>
+                                </a>
+                                <a
+                                    href={`${featuredProject.link}dashboard`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/40 text-white text-sm font-semibold uppercase tracking-[0.2em] hover:bg-white/10 transition-colors"
+                                >
+                                    Try the live dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </motion.div>
 
-                            <div className="flex justify-between items-baseline border-b border-white/10 pb-4">
-                                <h3 className="text-2xl font-light text-gray-500 group-hover:text-gray-300 transition-colors">{project.title}</h3>
-                                <p className="text-gray-600 text-xs tracking-widest uppercase">Locked</p>
+                    <motion.div
+                        className="relative rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 p-8 h-full"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9, delay: 0.1 }}
+                    >
+                        <div className="flex items-center justify-between mb-6">
+                            <div>
+                                <p className="text-sm uppercase tracking-[0.2em] text-gray-400">In development</p>
+                                <h3 className="text-2xl font-semibold">Next builds</h3>
                             </div>
-                        </motion.div>
-                    ))}
+                            <span className="px-3 py-1 text-xs uppercase tracking-[0.2em] bg-white/5 border border-white/10 rounded-full text-gray-300">Locked</span>
+                        </div>
+                        <div className="space-y-5">
+                            {roadmapProjects.map((project) => (
+                                <div key={project.id} className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors">
+                                    <div className="flex items-start justify-between">
+                                        <div>
+                                            <p className="text-lg font-medium text-white">{project.title}</p>
+                                            <p className="text-sm text-gray-400 mt-1">{project.note}</p>
+                                        </div>
+                                        <svg className="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

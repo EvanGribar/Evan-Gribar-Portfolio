@@ -16,8 +16,8 @@ const featuredProject = {
 
 const roadmapProjects = [
     { id: 1, title: 'Nexus Finance', note: 'All in one wallet, payment and budgeting platform.' },
-    { id: 2, title: 'Coming Soon', note: 'Stay tuned for new projects and developments.' },
-    { id: 3, title: 'Coming Soon', note: 'Stay tuned for new projects and developments.' },
+    { id: 2, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.' },
+    { id: 3, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.' },
 ]
 
 export default function Projects() {

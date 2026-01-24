@@ -68,7 +68,9 @@ export default function Projects() {
                                 {featuredProject.metrics.map((item) => (
                                     <div key={item.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
                                         <p className="text-xl md:text-2xl font-semibold text-white">{item.value}</p>
-                                        <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gray-300 mt-1">{item.label}</p>
+                                        <p className="text-[11px] md:text-xs uppercase tracking-[0.12em] text-gray-300 mt-1 leading-snug break-words">
+                                            {item.label}
+                                        </p>
                                     </div>
                                 ))}
                             </div>

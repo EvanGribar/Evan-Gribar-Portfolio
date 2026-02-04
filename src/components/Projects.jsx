@@ -15,15 +15,16 @@ const featuredProject = {
 }
 
 const roadmapProjects = [
-    { id: 1, title: 'Nexus Finance', note: 'All in one wallet, payment and budgeting platform.' },
-    { id: 2, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.' },
-    { id: 3, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.' },
     {
-        id: 4,
+        id: 1,
         title: 'Prism',
         note: 'Interactive web experience featuring kinetic gradients, layered motion, and immersive visuals.',
         link: 'https://prism-virid-five.vercel.app/',
+        status: 'In progress',
     },
+    { id: 2, title: 'Nexus Finance', note: 'All in one wallet, payment and budgeting platform.', status: 'Coming soon' },
+    { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
+    { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
 ]
 
 export default function Projects() {
@@ -114,7 +115,6 @@ export default function Projects() {
                                 <p className="text-sm uppercase tracking-[0.2em] text-gray-400">In development</p>
                                 <h3 className="text-2xl font-semibold">Next builds</h3>
                             </div>
-                            <span className="px-3 py-1 text-xs uppercase tracking-[0.2em] bg-white/5 border border-white/10 rounded-full text-gray-300">Locked</span>
                         </div>
                         <div className="space-y-5">
                             {roadmapProjects.map((project) => (
@@ -136,9 +136,9 @@ export default function Projects() {
                                             )}
                                             <p className="text-sm text-gray-400 mt-1">{project.note}</p>
                                         </div>
-                                        <svg className="w-6 h-6 text-gray-500 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                        </svg>
+                                        <span className="px-2.5 py-1 text-xs uppercase tracking-[0.2em] bg-white/5 border border-white/10 rounded-full text-gray-300 whitespace-nowrap">
+                                            {project.status}
+                                        </span>
                                     </div>
                                 </div>
                             ))}

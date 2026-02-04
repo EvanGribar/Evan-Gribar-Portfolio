@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 
 const featuredProject = {
-    title: 'Prism',
-    subtitle: 'Immersive web experience',
+    title: 'MagicPark AI',
+    subtitle: 'AI-powered theme park intelligence suite',
     description:
-        'A visual-first interactive site featuring kinetic gradients, layered motion, and responsive storytelling that showcases modern UI craft.',
-    tags: ['Interactive Experience', 'Motion Design', 'Vite + React', 'Immersive UI'],
+        'Live wait times, predictive crowd models, dynamic route optimization, and supabase-backed upgrades that help visitors reclaim hours in the park.',
+    tags: ['AI Wait Time Predictions', 'Crowd Heat Maps', 'Dynamic Trip Optimizer', 'Supabase Integration'],
     metrics: [
-        { label: 'Launch status', value: 'Live' },
-        { label: 'Built for', value: 'Showcase' },
-        { label: 'Experience', value: 'Immersive' },
+        { label: 'Avg time saved', value: '4.2h' },
+        { label: 'Prediction accuracy', value: '95%' },
+        { label: 'Happy travelers', value: '50k+' },
     ],
-    link: 'https://prism-virid-five.vercel.app/',
+    link: 'https://evangribar.github.io/MagicParkAI/',
 }
 
 const roadmapProjects = [
@@ -20,8 +20,8 @@ const roadmapProjects = [
     { id: 3, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.' },
     {
         id: 4,
-        title: 'Prism Virid',
-        note: 'Interactive web experience showcasing immersive visuals.',
+        title: 'Prism',
+        note: 'Interactive web experience featuring kinetic gradients, layered motion, and immersive visuals.',
         link: 'https://prism-virid-five.vercel.app/',
     },
 ]

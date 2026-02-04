@@ -22,7 +22,6 @@ const roadmapProjects = [
         link: 'https://prism-virid-five.vercel.app/',
         status: 'In progress',
     },
-    { id: 2, title: 'Nexus Finance', note: 'All in one wallet, payment and budgeting platform.', status: 'Coming soon' },
     { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
     { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
 ]

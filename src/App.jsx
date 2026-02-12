@@ -36,7 +36,7 @@ function App() {
 
 function About() {
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center py-32 px-6">
+    <div id="about" className="relative z-10 flex flex-col items-center justify-center py-32 px-6">
       <div className="max-w-4xl w-full p-12 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl">
         <h2 className="text-4xl md:text-6xl font-light mb-12 tracking-tight">About Me</h2>
         <p className="text-gray-300 text-xl md:text-3xl font-light leading-relaxed mb-8">

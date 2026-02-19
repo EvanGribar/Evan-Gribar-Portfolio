@@ -1,5 +1,4 @@
 import { useForm, ValidationError } from '@formspree/react';
-import { motion } from 'framer-motion'
 
 export default function Contact() {
     // REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID

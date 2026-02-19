@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 // import { Link } from 'react-router-dom' // We installed this, though might stick to simple hash links for one-page feel
 
 export default function Navbar() {

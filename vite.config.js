@@ -7,4 +7,9 @@ export default defineConfig({
   // Vite builds for GitHub Pages need the repo name as base so assets resolve correctly.
   // Dev server ignores base, so keeping it static avoids white screens from missing bundles in production.
   base: '/Evan-Gribar-Portfolio/',
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.js',
+  },
 })

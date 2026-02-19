@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function Contact() {
     // REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID
-    const [state, handleSubmit] = useForm("xlggplvk");
+    const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_FORM_ID || "");
 
     if (state.succeeded) {
         return (
@@ -36,7 +36,7 @@ export default function Contact() {
                             <p>Consulting</p>
                         </div>
                         <div className="mt-12 flex gap-8">
-                            <a href="mailto:ewgribar@crimson.ua.edu" className="text-white hover:text-gray-300 transition-colors uppercase tracking-widest text-sm border-b border-white pb-1">Email</a>
+                            <a href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || ""}`} className="text-white hover:text-gray-300 transition-colors uppercase tracking-widest text-sm border-b border-white pb-1">Email</a>
                             <a href="https://www.linkedin.com/in/evangribar" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors uppercase tracking-widest text-sm border-b border-white pb-1">LinkedIn</a>
                         </div>
                     </div>

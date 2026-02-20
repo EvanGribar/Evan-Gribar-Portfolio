@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 
-export default function Contact() {
+function ContactForm({ onReset }) {
     // REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID
     const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_FORM_ID || "");
 
@@ -11,7 +12,7 @@ export default function Contact() {
                     <h2 className="text-4xl md:text-5xl font-light mb-6">Message Sent.</h2>
                     <p className="text-xl text-gray-300 mb-8">Thanks for reaching out! I'll get back to you as soon as possible.</p>
                     <button
-                        onClick={() => window.location.reload()}
+                        onClick={onReset}
                         className="text-white border-b border-white pb-1 hover:text-gray-300 transition-colors uppercase tracking-widest text-sm"
                     >
                         Send another message
@@ -95,4 +96,14 @@ export default function Contact() {
             </div>
         </section>
     )
+}
+
+export default function Contact() {
+    const [formKey, setFormKey] = useState(0);
+
+    const handleReset = () => {
+        setFormKey(prev => prev + 1);
+    };
+
+    return <ContactForm key={formKey} onReset={handleReset} />;
 }

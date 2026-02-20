@@ -3,9 +3,8 @@ import { motion } from 'framer-motion'
 const roadmapProjects = [
     {
         id: 1,
-        title: 'Prism',
-        note: 'Interactive web experience featuring kinetic gradients, layered motion, and immersive visuals.',
-        link: 'https://prism-virid-five.vercel.app/',
+        title: 'InventoryIQ',
+        note: 'The all in one inventory management system for businesses.',
         status: 'In progress',
     },
     { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
@@ -57,7 +56,7 @@ export default function Projects() {
                                                     className="inline-flex items-center gap-2 text-lg font-medium text-white hover:text-white/80 transition-colors"
                                                 >
                                                     {project.title}
-                                                    <span className="text-xs uppercase tracking-[0.2em] text-emerald-200">Live</span>
+                                                    <span className="text-xs uppercase tracking-[0.2em] text-emerald-200">COMING SOON</span>
                                                 </a>
                                             ) : (
                                                 <p className="text-lg font-medium text-white">{project.title}</p>

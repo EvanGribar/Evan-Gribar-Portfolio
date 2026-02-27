@@ -6,6 +6,7 @@ const roadmapProjects = [
         title: 'intrn.co',
         note: 'Internship retention platform for employers.',
         status: 'Private alpha',
+        link: 'https://www.intrn.co',
     },
     {
         id: 1,

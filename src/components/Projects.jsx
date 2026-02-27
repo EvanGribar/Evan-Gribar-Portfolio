@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 
 const roadmapProjects = [
     {
+        id: 0,
+        title: 'intrn.co',
+        note: 'Internship retention platform for employers.',
+        status: 'Private alpha',
+    },
+    {
         id: 1,
         title: 'InventoryIQ',
         note: 'The all in one inventory management system for businesses.',
@@ -11,16 +17,22 @@ const roadmapProjects = [
     { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
 ]
 
-export default function Projects() {
-    return (
-        <section id="projects" className="py-20 text-white relative z-10">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    className="text-center mb-12"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+        const roadmapProjects = [
+            {
+                id: 0,
+                title: 'intrn.co',
+                note: 'Internship retention platform for employers.',
+                status: 'Private alpha',
+            },
+            {
+                id: 1,
+                title: 'InventoryIQ',
+                note: 'The all in one inventory management system for businesses.',
+                status: 'In progress',
+            },
+            { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
+            { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
+        ]
                 >
                     <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Current Projects</p>
                     <h2 className="text-5xl md:text-6xl font-bold tracking-tight">Building real-world tools</h2>

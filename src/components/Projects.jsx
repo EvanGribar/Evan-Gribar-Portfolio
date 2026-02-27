@@ -16,23 +16,16 @@ const roadmapProjects = [
     { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
     { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
 ]
-
-        const roadmapProjects = [
-            {
-                id: 0,
-                title: 'intrn.co',
-                note: 'Internship retention platform for employers.',
-                status: 'Private alpha',
-            },
-            {
-                id: 1,
-                title: 'InventoryIQ',
-                note: 'The all in one inventory management system for businesses.',
-                status: 'In progress',
-            },
-            { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
-            { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
-        ]
+export default function Projects() {
+    return (
+        <section id="projects" className="py-20 text-white relative z-10">
+            <div className="container mx-auto px-6">
+                <motion.div
+                    className="text-center mb-12"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                 >
                     <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Current Projects</p>
                     <h2 className="text-5xl md:text-6xl font-bold tracking-tight">Building real-world tools</h2>
@@ -40,7 +33,6 @@ const roadmapProjects = [
                         Product work that blends strategy, AI, and experience design. Featured below; more shipping soon.
                     </p>
                 </motion.div>
-
                 <div className="max-w-2xl mx-auto">
                     <motion.div
                         className="relative rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 p-8 h-full"

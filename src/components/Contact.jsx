@@ -3,7 +3,9 @@ import { useForm, ValidationError } from '@formspree/react';
 
 function ContactForm({ onReset }) {
     // REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID
-    const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_FORM_ID || "");
+    // Hardcoded Formspree form ID for production
+    const FORMSPREE_FORM_ID = "mqeddlqd";
+    const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID);
 
     if (state.succeeded) {
         return (

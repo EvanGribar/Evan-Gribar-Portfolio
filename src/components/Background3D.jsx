@@ -53,12 +53,13 @@ function FlowParticles({ count = 2000 }) {
             // Distance from particle current position to mouse
             const dx = worldMouseX - oscX
             const dy = worldMouseY - oscY
-            const dist = Math.sqrt(dx * dx + dy * dy)
+            const distSq = dx * dx + dy * dy
 
             // 1. Mouse Repulsion (Interactive) - Subtle/Gentle
             const interactionRadius = 5
 
-            if (dist < interactionRadius) {
+            if (distSq < interactionRadius * interactionRadius) {
+                const dist = Math.sqrt(distSq)
                 const force = (interactionRadius - dist) / interactionRadius
                 const angle = Math.atan2(dy, dx)
 
@@ -69,10 +70,11 @@ function FlowParticles({ count = 2000 }) {
 
             // 2. Text/Center Repulsion (Static) - AGGRESSIVE
             // Keeps particles away from the center where the name lies
-            const distCenter = Math.sqrt(oscX * oscX + oscY * oscY)
+            const distCenterSq = oscX * oscX + oscY * oscY
             const textRadius = 12 // Huge radius to force a hole
 
-            if (distCenter < textRadius) {
+            if (distCenterSq < textRadius * textRadius) {
+                const distCenter = Math.sqrt(distCenterSq)
                 const force = (textRadius - distCenter) / textRadius
                 const angle = Math.atan2(oscY, oscX)
 
@@ -105,14 +107,14 @@ function FlowParticles({ count = 2000 }) {
             // Color logic
             // Heatmap style: Crimson edges, White hot center
             // Modify color based on velocity for interaction feedback
-            const velocity = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy)
+            const velocitySq = particle.vx * particle.vx + particle.vy * particle.vy
 
-            if (velocity > 0.1) {
+            if (velocitySq > 0.01) { // 0.1 * 0.1
                 dotColor.set('#ffffff') // White hot when moving fast (interacting)
             } else {
-                const distFromCenter = Math.sqrt(finalX * finalX + finalY * finalY)
-                if (distFromCenter > 15) dotColor.set('#590d1c') // Darker Crimson (background)
-                else if (distFromCenter > 8) dotColor.set('#9E1B32') // Crimson
+                const distFromCenterSq = finalX * finalX + finalY * finalY
+                if (distFromCenterSq > 225) dotColor.set('#590d1c') // 15 * 15, Darker Crimson (background)
+                else if (distFromCenterSq > 64) dotColor.set('#9E1B32') // 8 * 8, Crimson
                 else dotColor.set('#cccccc') // Off-white core (less severe)
             }
 

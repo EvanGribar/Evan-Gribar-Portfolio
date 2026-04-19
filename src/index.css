@@ -1,43 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles for premium feel */
 :root {
-  --primary-color: #ffffff;
-  --secondary-color: #000000;
-  --accent-color: #4f46e5;
+  --bg-color: oklch(0.95 0.01 75);
+  --text-color: oklch(0.18 0.005 75);
+  --accent-red: oklch(0.50 0.18 30);
+  --border-color: var(--text-color);
+  --grid-size: 8vmax;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  line-height: 1.5;
   overflow-x: hidden;
+  touch-action: manipulation;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: none;
-  /* Hide default cursor */
+  /* Smooth aggressive noise texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
+h1, h2, h3, h4, h5, h6, .display-font {
+  font-family: 'Fraunces', serif;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+::selection {
+  background: var(--accent-red);
+  color: var(--bg-color);
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-left: 1px solid var(--border-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-red);
+  border: 1px solid var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color);
 }
 
-.lenis.lenis-stopped {
+:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 4px;
+}
+
+/* Base Structural Grid */
+.site-wrapper {
+  position: relative;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* Blueprint Grid Lines */
+.grid-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-size: var(--grid-size) var(--grid-size);
+  background-image: 
+    linear-gradient(to right, rgba(14,14,14,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14,14,14,0.06) 1px, transparent 1px);
+}
+
+.content-layer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Editorial Utilities */
+.brutal-border {
+  border: 1px solid var(--border-color);
+}
+.brutal-border-t { border-top: 1px solid var(--border-color); }
+.brutal-border-b { border-bottom: 1px solid var(--border-color); }
+.brutal-border-l { border-left: 1px solid var(--border-color); }
+.brutal-border-r { border-right: 1px solid var(--border-color); }
+
+.massive-text {
+  font-size: clamp(4rem, 15vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.editorial-italic {
+  font-style: italic;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.accent-block {
+  background-color: var(--accent-red);
+  color: var(--bg-color);
+}
+
+.hover-invert {
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --btn-hover-bg: var(--text-color);
+  --btn-hover-text: var(--bg-color);
+}
+.hover-invert:hover {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+  --btn-hover-bg: var(--bg-color);
+  --btn-hover-text: var(--text-color);
+}
+
+/* Form inputs raw styling */
+.raw-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  font-family: inherit;
+  font-size: clamp(1rem, 3vw, 2rem);
+  padding: 1rem 0;
+  border-radius: 0;
+  transition: border-color 0.2s linear;
+}
+.raw-input:focus {
+  outline: none;
+  border-color: var(--accent-red);
+}
+
+/* Remove button standard styles */
+.raw-btn {
+  border: 1px solid currentColor;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.2s linear, color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
+}
+.raw-btn:hover {
+  transform: translate(4px, 4px);
+  box-shadow: -4px -4px 0 var(--accent-red);
+}
+
+.raw-btn-outline {
+  background: transparent;
+  color: inherit;
+}
+.raw-btn-outline:hover {
+  background: var(--btn-hover-bg, var(--text-color));
+  color: var(--btn-hover-text, var(--bg-color)) !important;
+}
+
+.raw-btn-solid {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+.raw-btn-solid:hover {
+  background: var(--bg-color);
+  color: var(--text-color) !important;
+}
+
+/* Image reveal hover mechanism */
+.image-reveal-wrapper {
+  position: relative;
   overflow: hidden;
 }
+.image-reveal-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-color);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+}
+.image-reveal-wrapper.in-view::after {
+  transform: scaleX(0);
+}
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+}
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --grid-size: 15vmax;
+  }
 }

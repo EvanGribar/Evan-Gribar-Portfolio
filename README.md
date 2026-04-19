@@ -1,53 +1,50 @@
-# Evan Gribar | Creative Developer
+# Evan Gribar Portfolio
 
-A high-performance, cinematic portfolio exploring the intersection of business analytics, technology, and design.
+Bold, editorial, one-page portfolio focused on two flagship products:
 
-![Portfolio Preview](<Screenshot 2026-01-20 175814.png>)
+- `https://www.weekendly.co`
+- `https://www.intrn.co`
 
-## Overview
+## Stack
 
-This portfolio serves as a digital canvas to showcase my work in Business Analytics and Digital Strategy. It moves beyond traditional web design, utilizing high-end shader simulations and fluid interactivity to create a memorable user experience.
+- React 19 + Vite 7
+- TailwindCSS + custom CSS visual system
+- Framer Motion for reveal choreography
+- Formspree for contact handling
 
-## Technical Architecture
+## Local Development
 
-Built with a focus on performance and visual fidelity:
+```bash
+npm install
+npm run dev
+```
 
-*   **Core**: React 18, Vite
-*   **3D / WebGL**: Three.js, React Three Fiber (R3F)
-*   **Shaders & Effects**: Custom curl-noise particle simulations, Depth of Field, Bloom
-*   **Animations**: Framer Motion (Spring physics for cursor and UI)
-*   **Styling**: TailwindCSS (Utility-first)
-*   **Typography**: Inter (Google Fonts)
+## Build Commands
 
-## Key Features
+- `npm run build`: Standard production build (best for Vercel/Netlify/custom domain hosts)
+- `npm run build:gh`: GitHub Pages-compatible build with `/Evan-Gribar-Portfolio/` base path
 
-*   **Cinematic Flow Field**: A global, background particle system (2000+ nodes) that mimics organic fluid flow.
-*   **Magnetic Interaction**: Particles react subtly to mouse movement, creating liquid ripples.
-*   **Text Repulsion**: The flow field intelligently avoids the central hero text, ensuring maximum readability.
-*   **Glassmorphism**: UI components utilize `backdrop-blur` to seamlessly blend with the living background.
-*   **Alabama Palette**: A custom shader color mix of Crimson (#9E1B32), Bright Red, and White.
+## Deploy to Vercel
 
-## Getting Started
+1. Import this repository in Vercel.
+2. Framework preset: `Vite`.
+3. Build command: `npm run build`.
+4. Output directory: `dist`.
+5. Deploy.
 
-1.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
+`vercel.json` is included with a rewrite rule to route all paths to `index.html` for SPA safety.
 
-2.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
+## Deploy to Netlify
 
-3.  **Build for Production**
-    ```bash
-    npm run build
-    ```
+1. New site from Git.
+2. Build command: `npm run build`.
+3. Publish directory: `dist`.
+4. Deploy.
 
-## Contact
+## Deploy to GitHub Pages
 
-*   **University**: University of Alabama
-*   **Focus**: MIS, Business Analytics, Consulting
+```bash
+npm run deploy
+```
 
----
-© 2026 Evan Gribar. All Rights Reserved.
+This runs `predeploy` (`npm run build:gh`) and publishes `dist` with the correct repository base path.

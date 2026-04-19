@@ -1,81 +1,116 @@
 import { motion } from 'framer-motion'
 
-const roadmapProjects = [
+const projects = [
     {
-        id: 0,
-        title: 'intrn.co',
-        note: 'Internship retention platform for employers.',
-        status: 'Private alpha',
-        link: 'https://www.intrn.co',
+        id: 'wkndly',
+        title: 'Weekendly.co',
+        role: 'Founder / Full-Stack',
+        desc: 'Group travel platform coordinating anonymous preference tracking, AI destination matching, and voting. Next.js 15, Neon Postgres, Gemini AI.',
+        link: 'https://weekendly.co'
     },
     {
-        id: 1,
-        title: 'InventoryIQ',
-        note: 'The all in one inventory management system for businesses.',
-        status: 'In progress',
-    },
-    { id: 3, title: 'Pillar CRM', note: 'All-in-one CRM that makes business management seamless.', status: 'Coming soon' },
-    { id: 4, title: 'CampusLoop', note: 'A closed-loop, student-run, food delivery service for campus communities.', status: 'Coming soon' },
+        id: 'intrn',
+        title: 'Intrn.co',
+        role: 'Founder / Product',
+        desc: 'An AI-driven tracking platform designed to help students manage, analyze, and scale their internship application pipelines.',
+        link: 'https://www.intrn.co'
+    }
 ]
+
+const experience = [
+    {
+        id: 'tgt',
+        title: 'Target Corp.',
+        role: 'Tech Consultant',
+        desc: 'Identified floor-level bottlenecks and executed operational upgrades, directly reducing error rates and boosting departmental workflow speeds by 20%.',
+    },
+    {
+        id: 'mdb',
+        title: 'Million Dollar Band',
+        role: 'Manager',
+        desc: 'Managed game-day logistics for 400+ band members, coordinating massive equipment routing and transitions during high-stakes university events.',
+    },
+    {
+        id: 'mdt',
+        title: 'Mystical Dream Travel',
+        role: 'Social Media Strategy',
+        desc: 'Engineered analytics-driven social campaigns yielding double-digit growth in global audience reach and engagement.',
+    }
+]
+
 export default function Projects() {
     return (
-        <section id="projects" className="py-20 text-white relative z-10">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    className="text-center mb-12"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <p className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-4">Current Projects</p>
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight">Building real-world tools</h2>
-                    <p className="text-gray-400 mt-4 text-lg max-w-3xl mx-auto">
-                        Product work that blends strategy, AI, and experience design. Featured below; more shipping soon.
+        <section id="projects" className="border-b border-[#0E0E0E]">
+            {/* PROJECTS SECTION */}
+            <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-[#0E0E0E] bg-[#E34234] text-[#F4F0EB]">
+                    <h2 className="font-heading text-5xl md:text-7xl font-black mb-6 uppercase">
+                        Side <br/> Projects.
+                    </h2>
+                    <p className="text-xl font-light leading-relaxed max-w-md">
+                        A collection of late-night builds, technical experiments, and student-focused software platforms.
                     </p>
-                </motion.div>
-                <div className="max-w-2xl mx-auto">
-                    <motion.div
-                        className="relative rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 p-8 h-full"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.9, delay: 0.1 }}
-                    >
-                        <div className="flex items-center justify-between mb-6">
-                            <div>
-                                <p className="text-sm uppercase tracking-[0.2em] text-gray-400">In development</p>
-                                <h3 className="text-2xl font-semibold">Next builds</h3>
+                </div>
+
+                <div className="flex flex-col">
+                    {projects.map((proj, idx) => (
+                        <div key={proj.id} className={`p-8 md:p-12 border-[#0E0E0E] hover-invert flex flex-col justify-between ${idx !== projects.length - 1 ? 'border-b' : ''}`}>
+                            <div className="flex justify-between items-start mb-12">
+                                <h3 className="font-heading text-4xl md:text-6xl font-bold m-0 uppercase tracking-tighter">
+                                    {proj.title}
+                                </h3>
+                                <div className="text-right">
+                                    <span className="text-xs uppercase tracking-widest font-bold">Role</span>
+                                    <p className="editorial-italic">{proj.role}</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                                <p className="text-lg leading-snug font-medium">
+                                    {proj.desc}
+                                </p>
+                                <div className="text-right">
+                                    {proj.link && proj.link !== '#' && (
+                                        <a href={proj.link} target="_blank" rel="noopener noreferrer" aria-label={`View the ${proj.title} project`} className="raw-btn raw-btn-outline min-h-[44px] px-6 py-4 flex items-center justify-center w-full text-center">
+                                            Analyze Project
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <div className="space-y-5">
-                            {roadmapProjects.map((project) => (
-                                <div key={project.id} className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div>
-                                            {project.link ? (
-                                                <a
-                                                    href={project.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 text-lg font-medium text-white hover:text-white/80 transition-colors"
-                                                >
-                                                    {project.title}
-                                                    <span className="text-xs uppercase tracking-[0.2em] text-emerald-200">COMING SOON</span>
-                                                </a>
-                                            ) : (
-                                                <p className="text-lg font-medium text-white">{project.title}</p>
-                                            )}
-                                            <p className="text-sm text-gray-400 mt-1">{project.note}</p>
-                                        </div>
-                                        <span className="px-2.5 py-1 text-xs uppercase tracking-[0.2em] bg-white/5 border border-white/10 rounded-full text-gray-300 whitespace-nowrap">
-                                            {project.status}
-                                        </span>
-                                    </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* EXPERIENCE SECTION */}
+            <div className="grid grid-cols-1 md:grid-cols-2 border-t border-[#0E0E0E]">
+                <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-[#0E0E0E] bg-[#0E0E0E] text-[#F4F0EB]">
+                    <h2 className="font-heading text-5xl md:text-7xl font-black mb-6 uppercase">
+                        Campus & <br/> Professional.
+                    </h2>
+                    <p className="text-xl font-light leading-relaxed max-w-md">
+                        Logistics management, technical consulting, and leadership beyond the classroom.
+                    </p>
+                </div>
+
+                <div className="flex flex-col">
+                    {experience.map((exp, idx) => (
+                        <div key={exp.id} className={`p-8 md:p-12 border-[#0E0E0E] hover-invert flex flex-col justify-between ${idx !== experience.length - 1 ? 'border-b' : ''}`}>
+                            <div className="flex justify-between items-start mb-8">
+                                <h3 className="font-heading text-3xl font-bold m-0 uppercase tracking-tighter">
+                                    {exp.title}
+                                </h3>
+                                <div className="text-right shrink-0 ml-4">
+                                    <span className="text-xs uppercase tracking-widest font-bold">Role</span>
+                                    <p className="editorial-italic whitespace-nowrap">{exp.role}</p>
                                 </div>
-                            ))}
+                            </div>
+
+                            <p className="text-lg leading-snug font-medium">
+                                {exp.desc}
+                            </p>
                         </div>
-                    </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

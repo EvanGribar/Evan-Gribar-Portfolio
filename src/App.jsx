@@ -51,11 +51,36 @@ function ProjectVisual({ type }) {
 
   return (
     <div className="project-visual swarm-visual" aria-hidden="true">
-      <div className="agent agent-one">SEC</div>
-      <div className="agent agent-two">PERF</div>
-      <div className="agent agent-three">ARCH</div>
-      <div className="debate-ring"><span>DEBATE</span></div>
-      <div className="principal">PRINCIPAL<br /><strong>FINAL CALL</strong></div>
+      <div className="swarm-header">
+        <span>PULL REQUEST / #248</span>
+        <span className="review-status"><i /> REVIEW COMPLETE</span>
+      </div>
+      <div className="swarm-pipeline">
+        <div className="swarm-stage review-stage">
+          <span className="stage-number">01</span>
+          <p className="stage-label">Independent review</p>
+          <div className="review-agent"><b>SEC</b><span>2 findings</span></div>
+          <div className="review-agent"><b>PERF</b><span>1 finding</span></div>
+          <div className="review-agent"><b>ARCH</b><span>1 finding</span></div>
+          <div className="review-agent"><b>DX</b><span>clear</span></div>
+        </div>
+        <div className="swarm-stage transcript-stage">
+          <span className="stage-number">02</span>
+          <p className="stage-label">Structured debate</p>
+          <div className="transcript-row"><span>SEC / 01</span><strong>BLOCKING</strong></div>
+          <p className="transcript-copy">Untrusted input reaches query construction.</p>
+          <div className="transcript-row"><span>PERF / 02</span><strong>CONCUR</strong></div>
+          <p className="transcript-copy">Low traffic does not reduce the risk.</p>
+          <div className="debate-count"><span>ROUND</span><strong>02 / 02</strong></div>
+        </div>
+        <div className="swarm-stage decision-stage">
+          <span className="stage-number">03</span>
+          <p className="stage-label">Principal decision</p>
+          <div className="decision-count">01</div>
+          <strong className="decision-title">Blocking<br />finding</strong>
+          <p className="decision-copy">MERGE HELD</p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -133,7 +158,7 @@ export default function App() {
               <p className="about-lead">I’m a Management Information Systems and Business Cyber Security student at The University of Alabama. I’m interested in the space between a requirement and the system that has to deliver it.</p>
               <p>That means asking better questions, making the process legible, and shipping work that can be tested—not just presented.</p>
               <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>B.S. Management Information Systems</span><span>Business Cyber Security · GPA 3.7</span><span>2025—2029</span></div></div>
-              <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Social media strategy</span><span>North Huntingdon, Pennsylvania</span></div></div>
+              <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Digital Operations &amp; Project Strategy Intern</span><span>North Huntingdon, Pennsylvania</span></div></div>
               <div className="education-card"><span className="card-index">LDR / 01</span><div><strong>Million Dollar Band</strong><span>Manager</span><span>Logistics for a 400+ member organization</span></div></div>
             </div>
           </div>

@@ -77,20 +77,29 @@ em { font-family: var(--serif); font-weight: 400; }
 .score-mark { position: absolute; right: -1rem; bottom: -2.5rem; display: flex; align-items: flex-end; gap: 1rem; }
 .score-mark strong { font-size: clamp(7rem, 13vw, 13rem); line-height: 0.8; letter-spacing: -0.1em; font-weight: 500; color: transparent; -webkit-text-stroke: 1px var(--grey); }
 .score-mark span { max-width: 5rem; margin-bottom: 2.5rem; font-family: var(--mono); font-size: 0.6rem; text-transform: uppercase; color: var(--grey); }
-.swarm-visual { min-height: 36rem; }
-.swarm-visual::before, .swarm-visual::after { content: ''; position: absolute; left: 50%; top: 48%; width: 55%; height: 1px; background: var(--line-dark); transform-origin: center; }
-.swarm-visual::before { transform: translate(-50%, -50%) rotate(27deg); }
-.swarm-visual::after { transform: translate(-50%, -50%) rotate(-27deg); }
-.agent { position: absolute; width: 4.75rem; height: 4.75rem; display: grid; place-items: center; border: 1px solid var(--line-dark); border-radius: 50%; font-family: var(--mono); font-size: 0.65rem; background: var(--black); }
-.agent-one { left: 12%; top: 16%; }
-.agent-two { right: 12%; top: 22%; }
-.agent-three { left: 18%; bottom: 13%; }
-.debate-ring { position: absolute; left: 50%; top: 46%; width: 13rem; height: 13rem; display: grid; place-items: center; transform: translate(-50%, -50%); border: 1px solid var(--grey); border-radius: 50%; }
-.debate-ring::before { content: ''; position: absolute; inset: 1rem; border: 1px dashed var(--line-dark); border-radius: 50%; animation: spin 18s linear infinite; }
-.debate-ring span { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; }
-.principal { position: absolute; right: 8%; bottom: 8%; padding: 1rem; border-left: 1px solid var(--white); font-family: var(--mono); font-size: 0.6rem; color: var(--grey); }
-.principal strong { display: block; margin-top: 0.25rem; color: var(--white); font-size: 0.8rem; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.swarm-visual { min-height: 36rem; display: flex; flex-direction: column; padding: clamp(1.25rem, 3vw, 2.5rem); background-image: linear-gradient(rgba(244,244,240,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(244,244,240,0.035) 1px, transparent 1px); background-size: 3rem 3rem; }
+.swarm-header { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line-dark); font-family: var(--mono); font-size: clamp(0.5rem, 0.7vw, 0.65rem); letter-spacing: 0.07em; }
+.review-status { color: var(--grey); }
+.review-status i { display: inline-block; width: 0.4rem; height: 0.4rem; margin-right: 0.35rem; border-radius: 50%; background: var(--white); }
+.swarm-pipeline { flex: 1; display: grid; grid-template-columns: 0.85fr 1.25fr 0.9fr; }
+.swarm-stage { min-width: 0; display: flex; flex-direction: column; padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(0.75rem, 1.6vw, 1.5rem); border-right: 1px solid var(--line-dark); }
+.swarm-stage:first-child { padding-left: 0; }
+.swarm-stage:last-child { padding-right: 0; border-right: 0; }
+.stage-number, .stage-label, .review-agent, .transcript-row, .transcript-copy, .debate-count, .decision-copy { font-family: var(--mono); }
+.stage-number { color: var(--grey); font-size: 0.58rem; }
+.stage-label { min-height: 3rem; margin: 0.45rem 0 2rem; font-size: clamp(0.55rem, 0.72vw, 0.68rem); letter-spacing: 0.07em; text-transform: uppercase; }
+.review-agent { display: flex; justify-content: space-between; gap: 0.4rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line-dark); font-size: clamp(0.5rem, 0.66vw, 0.62rem); }
+.review-agent b { font-weight: 500; }
+.review-agent span { color: var(--grey); text-align: right; }
+.transcript-row { display: flex; justify-content: space-between; gap: 0.5rem; font-size: clamp(0.48rem, 0.62vw, 0.58rem); color: var(--grey); }
+.transcript-row strong { color: var(--white); font-weight: 500; }
+.transcript-copy { margin: 0.6rem 0 1.5rem; font-size: clamp(0.55rem, 0.72vw, 0.68rem); line-height: 1.55; }
+.debate-count { display: flex; align-items: end; justify-content: space-between; gap: 0.5rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line-dark); color: var(--grey); font-size: 0.55rem; }
+.debate-count strong { color: var(--white); font-size: clamp(1.3rem, 2.4vw, 2.4rem); line-height: 1; font-weight: 400; letter-spacing: -0.06em; }
+.decision-stage { position: relative; overflow: hidden; }
+.decision-count { margin-top: auto; font-size: clamp(4.5rem, 8.5vw, 8.5rem); line-height: 0.72; letter-spacing: -0.1em; font-weight: 500; color: transparent; -webkit-text-stroke: 1px var(--grey); }
+.decision-title { margin-top: 1.25rem; font-size: clamp(1rem, 1.8vw, 1.7rem); line-height: 1; letter-spacing: -0.04em; font-weight: 500; text-transform: uppercase; }
+.decision-copy { margin: 1rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--white); color: var(--grey); font-size: 0.55rem; letter-spacing: 0.08em; }
 
 .about-section { padding-block: clamp(6rem, 12vw, 11rem); background: var(--black); color: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(4rem, 10vw, 10rem); }
@@ -154,7 +163,15 @@ em { font-family: var(--serif); font-weight: 400; }
   .project-visual { min-height: 25rem; }
   .matrix-visual { padding: 1.25rem; }
   .matrix-head, .matrix-row { grid-template-columns: 0.9fr 1.2fr 0.5fr; gap: 0.5rem; }
-  .debate-ring { width: 10rem; height: 10rem; }
+  .swarm-visual { min-height: 32rem; padding: 1.25rem; }
+  .swarm-pipeline { grid-template-columns: 0.8fr 1.2fr; }
+  .swarm-stage { padding: 1.2rem 0.75rem; }
+  .transcript-stage { border-right: 0; }
+  .decision-stage { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 0.5rem 1rem; padding: 1.1rem 0 0; border-top: 1px solid var(--line-dark); }
+  .decision-stage .stage-number, .decision-stage .stage-label { display: none; }
+  .decision-count { grid-row: span 2; margin: 0; font-size: 5rem; }
+  .decision-title { margin: 0; text-align: right; }
+  .decision-copy { margin: 0; text-align: right; }
   .about-statement h2 { margin-top: 3rem; }
   .education-card { grid-template-columns: 4.5rem 1fr; }
   .credentials-heading { display: block; }

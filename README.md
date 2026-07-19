@@ -1,16 +1,15 @@
 # Evan Gribar Portfolio
 
-Bold, editorial, one-page portfolio focused on two flagship products:
+Minimalist, editorial portfolio focused on product systems, open-source AI tooling, and applied operations.
 
-- `https://www.weekendly.co`
-- `https://www.intrn.co`
+- [SpecBench](https://github.com/EvanGribar/SpecBench)
+- [Swarm Review](https://github.com/EvanGribar/Swarm-Review)
 
 ## Stack
 
 - React 19 + Vite 7
 - TailwindCSS + custom CSS visual system
-- Framer Motion for reveal choreography
-- Formspree for contact handling
+- Framer Motion for purposeful reveal choreography
 
 ## Local Development
 

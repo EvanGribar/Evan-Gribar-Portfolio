@@ -1,39 +1,164 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Cursor from './components/Cursor'
+import { useEffect, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
+
+const projects = [
+  {
+    number: '01',
+    title: 'SpecBench',
+    eyebrow: 'Open-source benchmark · 2026',
+    description: 'A controlled benchmark for testing whether AI code reviewers catch explicit product and business requirement violations—not just generic code quality issues.',
+    details: ['TypeScript', 'Deterministic scoring', '10 controlled cases', 'Apache 2.0'],
+    link: 'https://github.com/EvanGribar/SpecBench',
+    linkLabel: 'Explore SpecBench',
+    visual: 'matrix',
+  },
+  {
+    number: '02',
+    title: 'Swarm Review',
+    eyebrow: 'GitHub Action · Open source',
+    description: 'A multi-agent code review system where specialized reviewers inspect a pull request, debate their findings, and deliver one principal-level decision.',
+    details: ['Multi-agent review', 'Structured debate', 'GitHub Actions', 'Provider agnostic'],
+    link: 'https://github.com/EvanGribar/Swarm-Review',
+    linkLabel: 'Explore Swarm Review',
+    visual: 'swarm',
+  },
+]
+
+const credentials = [
+  ['2026', 'Lean Six Sigma White Belt', 'CSSC'],
+  ['2026', 'Project Management Fundamentals', 'IBM'],
+  ['2026', 'Data Fundamentals', 'IBM'],
+  ['2026', 'Enterprise Design Thinking Practitioner', 'IBM'],
+  ['2026', 'Reporting Certification', 'HubSpot'],
+]
+
+function Arrow({ diagonal = false }) {
+  return <span aria-hidden="true">{diagonal ? '↗' : '→'}</span>
+}
+
+function ProjectVisual({ type }) {
+  if (type === 'matrix') {
+    return (
+      <div className="project-visual matrix-visual" aria-hidden="true">
+        <div className="matrix-head"><span>CASE</span><span>REQUIREMENT</span><span>SCORE</span></div>
+        {[['AUTH-01', 'must block', 'PASS'], ['UX-04', 'must notify', 'PASS'], ['STATE-02', 'must persist', 'PASS']].map((row) => (
+          <div className="matrix-row" key={row[0]}><span>{row[0]}</span><span>{row[1]}</span><span>{row[2]}</span></div>
+        ))}
+        <div className="score-mark"><strong>100</strong><span>deterministic score</span></div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="project-visual swarm-visual" aria-hidden="true">
+      <div className="agent agent-one">SEC</div>
+      <div className="agent agent-two">PERF</div>
+      <div className="agent agent-three">ARCH</div>
+      <div className="debate-ring"><span>DEBATE</span></div>
+      <div className="principal">PRINCIPAL<br /><strong>FINAL CALL</strong></div>
+    </div>
+  )
+}
 
 export default function App() {
-  return (
-    <div className="site-wrapper">
-      <div className="grid-lines" aria-hidden="true" />
-      <Cursor />
+  const reduceMotion = useReducedMotion()
+  const [menuOpen, setMenuOpen] = useState(false)
 
-      {/* Grid container overlaying the background */}
-      <div className="content-layer min-h-screen border-x border-[#0E0E0E] mx-auto w-full md:w-[90%] bg-transparent flex flex-col">
-        <Navbar />
-        
-        <main className="flex-1 w-full flex flex-col">
-          <Hero />
-          
-          <div className="marquee-container mt-20" aria-hidden="true">
-            <div className="marquee-content">
-              OPERATION AND STRATEGY • PRODUCT ARCHITECTURE • TECHNICAL SYSTEM LAUNCH • OPERATION AND STRATEGY • PRODUCT ARCHITECTURE • TECHNICAL SYSTEM LAUNCH • 
+  useEffect(() => {
+    document.body.classList.toggle('menu-is-open', menuOpen)
+    return () => document.body.classList.remove('menu-is-open')
+  }, [menuOpen])
+
+  return (
+    <div className="site-shell">
+      <a className="skip-link" href="#main">Skip to content</a>
+      <header className="hero" id="top">
+        <nav className="nav frame" aria-label="Primary navigation">
+          <a className="monogram" href="#top" aria-label="Evan Gribar, home">EG<span>.</span></a>
+          <div className={`nav-links ${menuOpen ? 'is-open' : ''}`} id="mobile-menu">
+            <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a href="https://github.com/EvanGribar" target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>
+          </div>
+          <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen((open) => !open)}>
+            <span className="sr-only">Toggle navigation</span><span>{menuOpen ? 'Close' : 'Menu'}</span>
+          </button>
+        </nav>
+
+        <div className="hero-content frame">
+          <motion.div className="hero-kicker" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+            <span>Product systems / AI tooling</span><span>Pittsburgh · Tuscaloosa</span>
+          </motion.div>
+          <motion.h1 initial={reduceMotion ? false : { opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
+            <span>Evan</span><span className="hero-name-shift">Gribar<span className="hero-period">.</span></span>
+          </motion.h1>
+          <div className="hero-bottom">
+            <p>I build clear systems for messy problems—across product, operations, and AI-assisted software.</p>
+            <a className="round-link" href="#work" aria-label="View selected work"><Arrow /></a>
+          </div>
+        </div>
+        <div className="hero-ticker" aria-hidden="true"><div>PRODUCT THINKING · SYSTEM DESIGN · OPERATIONAL CLARITY · PRODUCT THINKING · SYSTEM DESIGN · OPERATIONAL CLARITY ·</div></div>
+      </header>
+
+      <main id="main">
+        <section className="work-section frame" id="work">
+          <div className="section-intro">
+            <p className="section-label">Selected work / 2026</p>
+            <h2>Built to make<br />judgment <em>visible.</em></h2>
+            <p className="section-summary">Two open-source systems exploring how software teams reason about requirements, evidence, and review quality.</p>
+          </div>
+          <div className="project-list">
+            {projects.map((project) => (
+              <article className="project" key={project.title}>
+                <div className="project-copy">
+                  <div className="project-meta"><span>{project.number}</span><span>{project.eyebrow}</span></div>
+                  <h3>{project.title}</h3><p>{project.description}</p>
+                  <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                  <a className="text-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel} <Arrow diagonal /></a>
+                </div>
+                <ProjectVisual type={project.visual} />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="about-section" id="about">
+          <div className="frame about-grid">
+            <div className="about-statement">
+              <p className="section-label">About / approach</p>
+              <h2>Business context.<br />Technical curiosity.<br /><em>Useful outcomes.</em></h2>
+            </div>
+            <div className="about-copy">
+              <p className="about-lead">I’m a Management Information Systems and Business Cyber Security student at The University of Alabama. I’m interested in the space between a requirement and the system that has to deliver it.</p>
+              <p>That means asking better questions, making the process legible, and shipping work that can be tested—not just presented.</p>
+              <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>B.S. Management Information Systems</span><span>Business Cyber Security · GPA 3.7</span><span>2025—2029</span></div></div>
+              <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Social media strategy</span><span>North Huntingdon, Pennsylvania</span></div></div>
+              <div className="education-card"><span className="card-index">LDR / 01</span><div><strong>Million Dollar Band</strong><span>Manager</span><span>Logistics for a 400+ member organization</span></div></div>
             </div>
           </div>
-          
-          <About />
-          <Projects />
-          <Contact />
-          
-          <footer className="w-full flex justify-between px-6 py-8 border-t border-[#0E0E0E] text-[#0E0E0E] text-xs font-bold uppercase tracking-widest mt-auto">
-            <span>© {new Date().getFullYear()} Evan Gribar</span>
-            <span className="editorial-italic hidden md:inline">Pittsburgh, PA</span>
-          </footer>
-        </main>
-      </div>
+        </section>
+
+        <section className="credentials-section frame" aria-labelledby="credentials-title">
+          <div className="credentials-heading"><p className="section-label">Selected credentials</p><h2 id="credentials-title">Learning, applied.</h2></div>
+          <div className="credential-list">
+            {credentials.map(([year, title, issuer]) => <div className="credential-row" key={title}><span>{year}</span><strong>{title}</strong><span>{issuer}</span></div>)}
+          </div>
+        </section>
+
+        <section className="contact-section" id="contact">
+          <div className="frame contact-inner">
+            <p className="section-label">Contact / open to opportunities</p>
+            <h2>Have a hard problem?<br /><em>Let’s make it clear.</em></h2>
+            <div className="contact-links">
+              <a href="mailto:ewgribar@crimson.ua.edu">Email me <Arrow diagonal /></a>
+              <a href="https://www.linkedin.com/in/evangribar/" target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>
+              <a href="https://github.com/EvanGribar" target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="footer frame"><span>© {new Date().getFullYear()} Evan Gribar</span><a href="#top">Back to top ↑</a></footer>
     </div>
   )
 }

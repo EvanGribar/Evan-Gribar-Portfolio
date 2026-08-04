@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "mode": "single",
+  "version": "1.1.0",
+  "generatedAt": "2026-08-04T21:24:22.189Z",
+  "packages": [
+    {
+      "id": "evan-gribar-portfolio",
+      "name": "evan-gribar-portfolio",
+      "directory": "",
+      "ecosystem": "node",
+      "previousVersion": "1.0.0",
+      "version": "1.1.0",
+      "bump": "minor",
+      "changelog": "CHANGELOG.md",
+      "customerNotes": "RELEASE_NOTES.md",
+      "private": true,
+      "releaseable": false,
+      "dependencyUpdate": false
+    }
+  ],
+  "readiness": {
+    "passed": true,
+    "missingLabels": [],
+    "missingFiles": [],
+    "failedCommands": [],
+    "missingTasks": [],
+    "requestedTasks": []
+  }
+}

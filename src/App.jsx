@@ -62,7 +62,7 @@ function ProjectVisual({ type }) {
             <p className="stage-label">Publish</p>
             <div className="release-count">01</div>
             <strong className="release-title">Release<br />ready</strong>
-            <p className="release-copy">TAG + NOTES</p>
+            <p className="release-copy">TAG + NOTES + VERIFIED</p>
           </div>
         </div>
       </div>

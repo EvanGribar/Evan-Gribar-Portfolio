@@ -2,7 +2,7 @@
 
 Minimalist, editorial portfolio focused on product systems, open-source AI tooling, and applied operations.
 
-- [SpecBench](https://github.com/EvanGribar/SpecBench)
+- [SemVerge](https://github.com/EvanGribar/semverge)
 - [Swarm Review](https://github.com/EvanGribar/Swarm-Review)
 
 ## Stack

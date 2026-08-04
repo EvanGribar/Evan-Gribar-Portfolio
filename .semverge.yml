@@ -1,0 +1,13 @@
+release:
+  branch: semverge/release
+  tagPrefix: v
+
+monorepo:
+  mode: single
+  includeRoot: true
+
+readiness:
+  commands:
+    - name: production build
+      run: npm run build
+

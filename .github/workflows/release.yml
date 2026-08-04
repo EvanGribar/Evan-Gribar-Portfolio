@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+  release:
+    types: [published]
+
+concurrency:
+  group: semverge-${{ github.repository }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  semverge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'push'
+      - uses: actions/setup-node@v4
+        if: github.event_name == 'push'
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        if: github.event_name == 'push'
+        run: npm ci
+      - uses: EvanGribar/semverge@v0.1.4
+

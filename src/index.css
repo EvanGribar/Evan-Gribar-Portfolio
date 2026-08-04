@@ -70,6 +70,26 @@ em { font-family: var(--serif); font-weight: 400; }
 .project li { padding: 0.4rem 0.7rem; border: 1px solid var(--line-light); font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.05em; text-transform: uppercase; }
 .text-link { margin-top: auto; padding-bottom: 0.15rem; font-weight: 600; }
 .project-visual { position: relative; align-self: stretch; min-height: 32rem; overflow: hidden; background: var(--black); color: var(--white); border-radius: 0.5rem; }
+.release-visual { display: flex; flex-direction: column; padding: clamp(1.25rem, 3vw, 2.5rem); background-image: linear-gradient(rgba(244,244,240,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(244,244,240,0.035) 1px, transparent 1px); background-size: 3rem 3rem; }
+.release-header { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line-dark); font-family: var(--mono); font-size: clamp(0.5rem, 0.7vw, 0.65rem); letter-spacing: 0.07em; }
+.release-status { color: var(--grey); }
+.release-status i { display: inline-block; width: 0.4rem; height: 0.4rem; margin-right: 0.35rem; border-radius: 50%; background: var(--white); }
+.release-pipeline { flex: 1; display: grid; grid-template-columns: 1fr 1.15fr 0.85fr; }
+.release-stage { min-width: 0; display: flex; flex-direction: column; padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(0.75rem, 1.6vw, 1.5rem); border-right: 1px solid var(--line-dark); }
+.release-stage:first-child { padding-left: 0; }
+.release-stage:last-child { padding-right: 0; border-right: 0; }
+.release-stage .stage-number, .release-stage .stage-label, .release-change, .release-note, .release-copy { font-family: var(--mono); }
+.release-stage .stage-label { min-height: 3rem; margin: 0.45rem 0 2rem; font-size: clamp(0.55rem, 0.72vw, 0.68rem); letter-spacing: 0.07em; text-transform: uppercase; }
+.release-change { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line-dark); font-size: clamp(0.5rem, 0.66vw, 0.62rem); }
+.release-change span { color: var(--grey); }
+.release-version { display: flex; flex-direction: column; gap: 0.6rem; margin-top: auto; }
+.release-version span { font-family: var(--mono); color: var(--grey); font-size: 0.55rem; letter-spacing: 0.08em; }
+.release-version strong { font-size: clamp(2.8rem, 5vw, 5rem); line-height: 0.85; letter-spacing: -0.08em; font-weight: 500; }
+.release-note { margin: 1.5rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--line-dark); color: var(--grey); font-size: 0.55rem; letter-spacing: 0.08em; }
+.release-final-stage { position: relative; overflow: hidden; }
+.release-count { margin-top: auto; font-size: clamp(4.5rem, 8.5vw, 8.5rem); line-height: 0.72; letter-spacing: -0.1em; font-weight: 500; color: transparent; -webkit-text-stroke: 1px var(--grey); }
+.release-title { margin-top: 1.25rem; font-size: clamp(1rem, 1.8vw, 1.7rem); line-height: 1; letter-spacing: -0.04em; font-weight: 500; text-transform: uppercase; }
+.release-copy { margin: 1rem 0 0; padding-top: 0.75rem; border-top: 1px solid var(--white); color: var(--grey); font-size: 0.55rem; letter-spacing: 0.08em; }
 .matrix-visual { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.5rem, 4vw, 4rem); }
 .matrix-head, .matrix-row { display: grid; grid-template-columns: 0.75fr 1.5fr 0.5fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line-dark); font-family: var(--mono); font-size: clamp(0.55rem, 0.8vw, 0.72rem); }
 .matrix-head { color: var(--grey); letter-spacing: 0.08em; }
@@ -162,6 +182,16 @@ em { font-family: var(--serif); font-weight: 400; }
   .project h3 { font-size: clamp(3.5rem, 18vw, 6rem); overflow-wrap: anywhere; }
   .project-visual { min-height: 25rem; }
   .matrix-visual { padding: 1.25rem; }
+  .release-visual { min-height: 32rem; padding: 1.25rem; }
+  .release-pipeline { grid-template-columns: 0.9fr 1.1fr; }
+  .release-stage { padding: 1.2rem 0.75rem; }
+  .release-stage:first-child { padding-left: 0; }
+  .release-stage:nth-child(2) { border-right: 0; }
+  .release-final-stage { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 0.5rem 1rem; padding: 1.1rem 0 0; border-top: 1px solid var(--line-dark); }
+  .release-final-stage .stage-number, .release-final-stage .stage-label { display: none; }
+  .release-count { grid-row: span 2; margin: 0; font-size: 5rem; }
+  .release-title { margin: 0; text-align: right; }
+  .release-copy { margin: 0; text-align: right; }
   .matrix-head, .matrix-row { grid-template-columns: 0.9fr 1.2fr 0.5fr; gap: 0.5rem; }
   .swarm-visual { min-height: 32rem; padding: 1.25rem; }
   .swarm-pipeline { grid-template-columns: 0.8fr 1.2fr; }

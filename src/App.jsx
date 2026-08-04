@@ -4,13 +4,13 @@ import { motion, useReducedMotion } from 'framer-motion'
 const projects = [
   {
     number: '01',
-    title: 'SpecBench',
-    eyebrow: 'Open-source benchmark · 2026',
-    description: 'A controlled benchmark for testing whether AI code reviewers catch explicit product and business requirement violations—not just generic code quality issues.',
-    details: ['TypeScript', 'Deterministic scoring', '10 controlled cases', 'Apache 2.0'],
-    link: 'https://github.com/EvanGribar/SpecBench',
-    linkLabel: 'Explore SpecBench',
-    visual: 'matrix',
+    title: 'SemVerge',
+    eyebrow: 'Release automation · Open source',
+    description: 'A GitHub Action that turns change detection into a repeatable release path, from version selection and readiness checks to release notes and publishing.',
+    details: ['TypeScript', 'GitHub Action', 'Semantic versioning', 'Deterministic releases'],
+    link: 'https://github.com/EvanGribar/semverge',
+    linkLabel: 'Explore SemVerge',
+    visual: 'release',
   },
   {
     number: '02',
@@ -37,14 +37,34 @@ function Arrow({ diagonal = false }) {
 }
 
 function ProjectVisual({ type }) {
-  if (type === 'matrix') {
+  if (type === 'release') {
     return (
-      <div className="project-visual matrix-visual" aria-hidden="true">
-        <div className="matrix-head"><span>CASE</span><span>REQUIREMENT</span><span>SCORE</span></div>
-        {[['AUTH-01', 'must block', 'PASS'], ['UX-04', 'must notify', 'PASS'], ['STATE-02', 'must persist', 'PASS']].map((row) => (
-          <div className="matrix-row" key={row[0]}><span>{row[0]}</span><span>{row[1]}</span><span>{row[2]}</span></div>
-        ))}
-        <div className="score-mark"><strong>100</strong><span>deterministic score</span></div>
+      <div className="project-visual release-visual" aria-hidden="true">
+        <div className="release-header">
+          <span>RELEASE / MAIN</span>
+          <span className="release-status"><i /> READY TO SHIP</span>
+        </div>
+        <div className="release-pipeline">
+          <div className="release-stage">
+            <span className="stage-number">01</span>
+            <p className="stage-label">Detect changes</p>
+            <div className="release-change"><b>PR #248</b><span>ship:feature</span></div>
+            <div className="release-change"><b>PR #247</b><span>ship:fix</span></div>
+          </div>
+          <div className="release-stage">
+            <span className="stage-number">02</span>
+            <p className="stage-label">Choose version</p>
+            <div className="release-version"><span>NEXT RELEASE</span><strong>v0.1.3</strong></div>
+            <p className="release-note">MINOR + PATCH</p>
+          </div>
+          <div className="release-stage release-final-stage">
+            <span className="stage-number">03</span>
+            <p className="stage-label">Publish</p>
+            <div className="release-count">01</div>
+            <strong className="release-title">Release<br />ready</strong>
+            <p className="release-copy">TAG + NOTES</p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -119,7 +139,7 @@ export default function App() {
             <span>Evan</span><span className="hero-name-shift">Gribar<span className="hero-period">.</span></span>
           </motion.h1>
           <div className="hero-bottom">
-            <p>I build clear systems for messy problems—across product, operations, and AI-assisted software.</p>
+            <p>I build clear systems for messy problems across product, operations, and AI-assisted software.</p>
             <a className="round-link" href="#work" aria-label="View selected work"><Arrow /></a>
           </div>
         </div>
@@ -156,8 +176,8 @@ export default function App() {
             </div>
             <div className="about-copy">
               <p className="about-lead">I’m a Management Information Systems and Business Cyber Security student at The University of Alabama. I’m interested in the space between a requirement and the system that has to deliver it.</p>
-              <p>That means asking better questions, making the process legible, and shipping work that can be tested—not just presented.</p>
-              <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>B.S. Management Information Systems</span><span>Business Cyber Security · GPA 3.7</span><span>2025—2029</span></div></div>
+              <p>That means asking better questions, making the process legible, and shipping work that can be tested, not just presented.</p>
+              <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>B.S. Management Information Systems</span><span>Business Cyber Security · GPA 3.7</span><span>2025-2029</span></div></div>
               <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Digital Operations &amp; Project Strategy Intern</span><span>North Huntingdon, Pennsylvania</span></div></div>
               <div className="education-card"><span className="card-index">LDR / 01</span><div><strong>Million Dollar Band</strong><span>Manager</span><span>Logistics for a 400+ member organization</span></div></div>
             </div>
@@ -174,7 +194,7 @@ export default function App() {
         <section className="contact-section" id="contact">
           <div className="frame contact-inner">
             <p className="section-label">Contact / open to opportunities</p>
-            <h2>Have a hard problem?<br /><em>Let’s make it clear.</em></h2>
+            <h2>Have a problem worth solving?<br /><em>Let’s work through it.</em></h2>
             <div className="contact-links">
               <a href="mailto:ewgribar@crimson.ua.edu">Email me <Arrow diagonal /></a>
               <a href="https://www.linkedin.com/in/evangribar/" target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>

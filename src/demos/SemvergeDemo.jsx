@@ -157,7 +157,7 @@ export default function SemvergeDemo() {
         {...stageLook}
         width={660}
         height={620}
-        compact={{ below: 560, width: 358, height: 560 }}
+        compact={{ below: 560, width: 358, height: 580 }}
         initial={initial}
         poster={poster}
         script={script}

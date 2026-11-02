@@ -12,7 +12,7 @@ const AGENTS = [
   { code: 'SEC', role: 'Security', findings: '2 findings', blocking: true },
   { code: 'PERF', role: 'Performance', findings: '1 finding', concur: true },
   { code: 'ARCH', role: 'Architecture', findings: '1 note' },
-  { code: 'DX', role: 'Developer experience', findings: 'Clear' },
+  { code: 'DX', role: 'Experience', findings: 'Clear' },
 ]
 
 const DEBATE = [
@@ -155,8 +155,8 @@ export default function SwarmReviewDemo() {
       <Stage
         {...stageLook}
         width={660}
-        height={620}
-        compact={{ below: 560, width: 358, height: 580 }}
+        height={640}
+        compact={{ below: 560, width: 358, height: 680 }}
         initial={initial}
         poster={poster}
         script={script}
@@ -183,6 +183,7 @@ export default function SwarmReviewDemo() {
                 <section className="sw-agents">
                   <p className="sw-label">Independent review</p>
                   {AGENTS.map((agent, i) => <Agent agent={agent} s={s} i={i} key={agent.code} />)}
+                  <p className="sw-agents-foot">Independent reads · no shared context</p>
                 </section>
                 <Debate s={s} />
               </div>

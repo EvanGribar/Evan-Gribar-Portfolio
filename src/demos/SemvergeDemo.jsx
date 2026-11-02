@@ -11,11 +11,11 @@ import './demos.css'
 // system responding to it. Plays once when the card scrolls into view.
 
 const CHANGES = [
-  { id: '248', kind: 'ship:feature', title: 'Scope tokens to workspace' },
-  { id: '247', kind: 'ship:fix', title: 'Retry release tags once' },
+  { id: '248', kind: 'feature', title: 'Workspace-scoped tokens' },
+  { id: '247', kind: 'fix', title: 'Retry release tags' },
 ]
 
-const CHECKS = ['Tag created', 'Release notes', 'CI checks']
+const CHECKS = ['Tag', 'Notes', 'CI']
 
 const initial = { step: 0, version: 'v0.1.2', publishing: false, published: false }
 const poster = { step: 6, version: 'v0.1.3', publishing: false, published: true }
@@ -60,7 +60,7 @@ function Top({ published }) {
   return (
     <>
       <header className="sv-top">
-        <span className="sv-word">SEMVERGE <span>/ release run</span></span>
+        <span className="sv-word">SEMVERGE <span>/ release</span></span>
         <State published={published} />
       </header>
       <div className="sv-sub">
@@ -75,7 +75,7 @@ function Top({ published }) {
 function Changes({ s }) {
   return (
     <section className="sv-col sv-changes">
-      <p className="sv-label"><b>01</b> Detect changes</p>
+      <p className="sv-label"><b>01</b> Changes</p>
       <div className="sv-change-list">
         {CHANGES.map((change, i) => (
           <div
@@ -94,7 +94,7 @@ function Changes({ s }) {
       </div>
       <p className="sv-note" data-in={s.step >= 1 || undefined}>
         <Check on={s.step >= 1} size={12} />
-        <span>2 changes since v0.1.2</span>
+        <span>2 changes</span>
       </p>
     </section>
   )
@@ -103,12 +103,12 @@ function Changes({ s }) {
 function Version({ s }) {
   return (
     <section className="sv-col sv-version-col">
-      <p className="sv-label"><b>02</b> Choose version</p>
+      <p className="sv-label"><b>02</b> Version</p>
       <div className="sv-version">
-        <span className="sv-muted">NEXT RELEASE</span>
+        <span className="sv-muted">NEXT</span>
         <Roll className="sv-vnum">{s.version}</Roll>
         <span className="sv-bump">
-          <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR + PATCH' }} align="start" />
+          <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR' }} align="start" />
         </span>
       </div>
       <ul className="sv-checks">
@@ -126,16 +126,16 @@ function Version({ s }) {
 function Publish({ s }) {
   return (
     <section className="sv-col sv-publish">
-      <p className="sv-label"><b>03</b> Publish</p>
+      <p className="sv-label"><b>03</b> Release</p>
       <div className="sv-result" data-done={s.published || undefined}>
         <span className="sv-result-mark">
           <Check on={s.published} pending={s.publishing} size={24} />
         </span>
         <div className="sv-result-copy">
           <strong>
-            <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready to ship', published: 'Release published' }} align="start" />
+            <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready', published: 'Published' }} align="start" />
           </strong>
-          <span>{s.published ? 'v0.1.3 · tag + notes' : 'Tag, notes and checks'}</span>
+          <span>{s.published ? 'v0.1.3' : 'tag · notes · CI'}</span>
         </div>
       </div>
       <span
@@ -148,7 +148,7 @@ function Publish({ s }) {
         <States
           className="sv-btn-label"
           value={s.published ? 'published' : s.publishing ? 'publishing' : 'publish'}
-          states={{ publish: 'Publish release', publishing: 'Publishing', published: 'View release' }}
+          states={{ publish: 'Publish', publishing: 'Publishing', published: 'Open release' }}
         />
         <span className="sv-btn-icon" data-shown={s.published || undefined}>
           <Icon name="external" size={12} />
@@ -183,7 +183,7 @@ export default function SemvergeDemo() {
             <div className="sv sv--compact">
               <Top published={s.published} />
               <div className="sv-c-changes">
-                <p className="sv-label"><b>01</b> Detected changes</p>
+                <p className="sv-label"><b>01</b> Changes</p>
                 {CHANGES.map((change, i) => (
                   <div
                     className="sv-change"
@@ -201,10 +201,10 @@ export default function SemvergeDemo() {
               </div>
               <div className="sv-c-version">
                 <div className="sv-version">
-                  <span className="sv-muted">NEXT RELEASE</span>
+                  <span className="sv-muted">NEXT</span>
                   <Roll className="sv-vnum">{s.version}</Roll>
                   <span className="sv-bump">
-                    <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR + PATCH' }} align="start" />
+                    <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR' }} align="start" />
                   </span>
                 </div>
                 <ul className="sv-checks">
@@ -223,9 +223,9 @@ export default function SemvergeDemo() {
                   </span>
                   <div className="sv-result-copy">
                     <strong>
-                      <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready to ship', published: 'Release published' }} align="start" />
+                      <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready', published: 'Published' }} align="start" />
                     </strong>
-                    <span>{s.published ? 'v0.1.3 · tag + notes' : 'Tag, notes and checks'}</span>
+                    <span>{s.published ? 'v0.1.3' : 'tag · notes · CI'}</span>
                   </div>
                 </div>
                 <span
@@ -236,10 +236,10 @@ export default function SemvergeDemo() {
                   data-done={s.published || undefined}
                 >
                   <States
-          className="sv-btn-label"
-          value={s.published ? 'published' : s.publishing ? 'publishing' : 'publish'}
-          states={{ publish: 'Publish release', publishing: 'Publishing', published: 'View release' }}
-        />
+                    className="sv-btn-label"
+                    value={s.published ? 'published' : s.publishing ? 'publishing' : 'publish'}
+                    states={{ publish: 'Publish', publishing: 'Publishing', published: 'Open release' }}
+                  />
                   <span className="sv-btn-icon" data-shown={s.published || undefined}>
                     <Icon name="external" size={12} />
                   </span>

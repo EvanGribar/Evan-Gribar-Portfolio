@@ -11,14 +11,14 @@ import './demos.css'
 
 const AGENTS = [
   { code: 'SEC', role: 'Security', findings: '2 findings', blocking: true },
-  { code: 'PERF', role: 'Performance', findings: '1 finding', concur: true },
-  { code: 'ARCH', role: 'Architecture', findings: '1 note' },
-  { code: 'DX', role: 'Experience', findings: 'Clear' },
+  { code: 'PERF', role: 'Perf', findings: '1 finding', concur: true },
+  { code: 'ARCH', role: 'Arch', findings: '1 note' },
+  { code: 'DX', role: 'UX', findings: 'Clear' },
 ]
 
 const DEBATE = [
-  { agent: 'SEC', round: '01', verdict: 'BLOCKING', copy: 'Untrusted input reaches query construction.', delay: 0 },
-  { agent: 'PERF', round: '02', verdict: 'CONCUR', copy: 'Low traffic does not reduce the risk.', delay: 200 },
+  { agent: 'SEC', round: '01', verdict: 'BLOCKING', copy: 'Untrusted input hits the query.', delay: 0 },
+  { agent: 'PERF', round: '02', verdict: 'CONCUR', copy: 'Low traffic, same risk.', delay: 200 },
 ]
 
 const initial = { step: 0 }
@@ -46,18 +46,18 @@ function Top({ s }) {
   return (
     <>
       <header className="sw-top">
-        <span className="sw-word">SWARM REVIEW <span>/ pull request</span></span>
+        <span className="sw-word">SWARM REVIEW <span>/ PR</span></span>
         <span className="sw-state" data-done={s.step >= 4 || undefined}>
           <i />
           <States
             value={s.step >= 4 ? 'complete' : s.step >= 3 ? 'debate' : 'reviewing'}
-            states={{ reviewing: 'REVIEWING', debate: 'IN DEBATE', complete: 'REVIEW COMPLETE' }}
+            states={{ reviewing: 'REVIEWING', debate: 'DEBATE', complete: 'COMPLETE' }}
           />
         </span>
       </header>
       <div className="sw-sub">
         <span>#248</span>
-        <span className="sw-faint">feature/auth-scopes → main</span>
+        <span className="sw-faint">auth-scopes → main</span>
         <span className="sw-run">4 reviewers</span>
       </div>
     </>
@@ -69,8 +69,8 @@ function PullRequest() {
     <div className="sw-pr">
       <span className="sw-pr-num">#248</span>
       <div className="sw-pr-copy">
-        <strong>fix: scope query parameters</strong>
-        <span>3 files · +48 −12 · 2 rounds of debate</span>
+        <strong>Scope query params</strong>
+        <span>3 files · +48 −12</span>
       </div>
     </div>
   )
@@ -100,7 +100,7 @@ function Agent({ agent, s, i }) {
 function Debate({ s, compact }) {
   return (
     <section className="sw-debate">
-      <p className="sw-label">Structured debate</p>
+      <p className="sw-label">Debate</p>
       <div className="sw-debate-body">
         <div className="sw-skeleton" data-on={s.step < 3 || undefined}>
           <div>
@@ -140,18 +140,18 @@ function Decision({ s }) {
   return (
     <div className="sw-decision" data-done={s.step >= 5 || undefined}>
       <div className="sw-verdict-wrap">
-        <p className="sw-label"><b>Principal decision</b></p>
+        <p className="sw-label"><b>Decision</b></p>
         <p className="sw-verdict">
-          <Roll>{s.step >= 5 ? 'Merge held' : 'Awaiting debate'}</Roll>
+          <Roll>{s.step >= 5 ? 'Merge held' : 'Pending'}</Roll>
         </p>
         <p className="sw-decision-meta">
-          {s.step >= 5 ? '1 blocking finding · 2 concur' : 'Senior reviewer reads the transcript'}
+          {s.step >= 5 ? '1 blocking · 2 concur' : 'Reading the thread'}
         </p>
       </div>
       <span className="sw-stamp" data-on={s.step >= 5 || undefined}>
         <States
           value={s.step >= 5 ? 'changes' : 'review'}
-          states={{ review: 'IN REVIEW', changes: 'CHANGES REQUESTED' }}
+          states={{ review: 'IN REVIEW', changes: 'CHANGES' }}
         />
       </span>
     </div>
@@ -190,9 +190,9 @@ export default function SwarmReviewDemo() {
               <PullRequest />
               <div className="sw-grid">
                 <section className="sw-agents">
-                  <p className="sw-label">Independent review</p>
+                  <p className="sw-label">Reviewers</p>
                   {AGENTS.map((agent, i) => <Agent agent={agent} s={s} i={i} key={agent.code} />)}
-                  <p className="sw-agents-foot">Independent reads · no shared context</p>
+                  <p className="sw-agents-foot">No shared context</p>
                 </section>
                 <Debate s={s} />
               </div>

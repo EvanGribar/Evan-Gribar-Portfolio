@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import SemvergeDemo from './demos/SemvergeDemo'
+import SwarmReviewDemo from './demos/SwarmReviewDemo'
 
 const projects = [
   {
@@ -34,75 +36,6 @@ const credentials = [
 
 function Arrow({ diagonal = false }) {
   return <span aria-hidden="true">{diagonal ? '↗' : '→'}</span>
-}
-
-function ProjectVisual({ type }) {
-  if (type === 'release') {
-    return (
-      <div className="project-visual release-visual" aria-hidden="true">
-        <div className="release-header">
-          <span>RELEASE / MAIN</span>
-          <span className="release-status"><i /> READY TO SHIP</span>
-        </div>
-        <div className="release-pipeline">
-          <div className="release-stage">
-            <span className="stage-number">01</span>
-            <p className="stage-label">Detect changes</p>
-            <div className="release-change"><b>PR #248</b><span>ship:feature</span></div>
-            <div className="release-change"><b>PR #247</b><span>ship:fix</span></div>
-          </div>
-          <div className="release-stage">
-            <span className="stage-number">02</span>
-            <p className="stage-label">Choose version</p>
-            <div className="release-version"><span>NEXT RELEASE</span><strong>v0.1.3</strong></div>
-            <p className="release-note">MINOR + PATCH</p>
-          </div>
-          <div className="release-stage release-final-stage">
-            <span className="stage-number">03</span>
-            <p className="stage-label">Publish</p>
-            <div className="release-count">01</div>
-            <strong className="release-title">Release<br />ready</strong>
-          <p className="release-copy">TAG + NOTES + VERIFIED + PUBLISHED</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="project-visual swarm-visual" aria-hidden="true">
-      <div className="swarm-header">
-        <span>PULL REQUEST / #248</span>
-        <span className="review-status"><i /> REVIEW COMPLETE</span>
-      </div>
-      <div className="swarm-pipeline">
-        <div className="swarm-stage review-stage">
-          <span className="stage-number">01</span>
-          <p className="stage-label">Independent review</p>
-          <div className="review-agent"><b>SEC</b><span>2 findings</span></div>
-          <div className="review-agent"><b>PERF</b><span>1 finding</span></div>
-          <div className="review-agent"><b>ARCH</b><span>1 finding</span></div>
-          <div className="review-agent"><b>DX</b><span>clear</span></div>
-        </div>
-        <div className="swarm-stage transcript-stage">
-          <span className="stage-number">02</span>
-          <p className="stage-label">Structured debate</p>
-          <div className="transcript-row"><span>SEC / 01</span><strong>BLOCKING</strong></div>
-          <p className="transcript-copy">Untrusted input reaches query construction.</p>
-          <div className="transcript-row"><span>PERF / 02</span><strong>CONCUR</strong></div>
-          <p className="transcript-copy">Low traffic does not reduce the risk.</p>
-          <div className="debate-count"><span>ROUND</span><strong>02 / 02</strong></div>
-        </div>
-        <div className="swarm-stage decision-stage">
-          <span className="stage-number">03</span>
-          <p className="stage-label">Principal decision</p>
-          <div className="decision-count">01</div>
-          <strong className="decision-title">Blocking<br />finding</strong>
-          <p className="decision-copy">MERGE HELD</p>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 export default function App() {
@@ -162,7 +95,7 @@ export default function App() {
                   <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                   <a className="text-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel} <Arrow diagonal /></a>
                 </div>
-                <ProjectVisual type={project.visual} />
+                <div className="project-visual project-demo">{project.visual === 'release' ? <SemvergeDemo /> : <SwarmReviewDemo />}</div>
               </article>
             ))}
           </div>

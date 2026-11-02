@@ -12,7 +12,7 @@ Beats:
 
 Poster: SemVerge shows the published release; Swarm Review shows the held merge.
 
-Revisions: after clipped text was reported, Roll text carries a 1.35 line-height (the descenders in "Publishing", "Merge held" and "Release published" were being cut by Roll's own clip), agent roles were shortened so they no longer ellipsize, and the compact Swarm decision puts the verdict on its own full-width line with the stamp above it.
+Revisions: fade labels now use the kit's States, which holds the largest state in one slot, so no label is clipped while its width changes. After clipped text was reported, Roll text carries a 1.35 line-height (the descenders in "Publishing", "Merge held" and "Release published" were being cut by Roll's own clip), agent roles were shortened so they no longer ellipsize, and the compact Swarm decision puts the verdict on its own full-width line with the stamp above it.
 
 Captured: none. No browser was available in this environment: Chromium needs `libnss3` and the container has no root or package sources for it.
 

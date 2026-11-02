@@ -1,5 +1,6 @@
 import { Stage } from '../stageshow/kit/stage'
 import { Roll } from '../stageshow/kit/motion/Roll'
+import { States } from '../stageshow/kit/motion/States'
 import { Bar } from '../stageshow/kit/window'
 import { stageLook } from './look'
 import './demos.css'
@@ -48,9 +49,10 @@ function Top({ s }) {
         <span className="sw-word">SWARM REVIEW <span>/ pull request</span></span>
         <span className="sw-state" data-done={s.step >= 4 || undefined}>
           <i />
-          <Roll variant="fade">
-            {s.step >= 4 ? 'REVIEW COMPLETE' : s.step >= 3 ? 'IN DEBATE' : 'REVIEWING'}
-          </Roll>
+          <States
+            value={s.step >= 4 ? 'complete' : s.step >= 3 ? 'debate' : 'reviewing'}
+            states={{ reviewing: 'REVIEWING', debate: 'IN DEBATE', complete: 'REVIEW COMPLETE' }}
+          />
         </span>
       </header>
       <div className="sw-sub">
@@ -85,7 +87,11 @@ function Agent({ agent, s, i }) {
       <b>{agent.code}</b>
       <span className="sw-agent-role">{agent.role}</span>
       <span className="sw-agent-find" data-found={s.step >= 2 || undefined} data-blocking={agent.blocking || undefined}>
-        <Roll variant="fade">{s.step >= 2 ? agent.findings : 'reviewing'}</Roll>
+        <States
+          align="end"
+          value={s.step >= 2 ? 'found' : 'reading'}
+          states={{ reading: 'reviewing', found: agent.findings }}
+        />
       </span>
     </div>
   )
@@ -139,11 +145,14 @@ function Decision({ s }) {
           <Roll>{s.step >= 5 ? 'Merge held' : 'Awaiting debate'}</Roll>
         </p>
         <p className="sw-decision-meta">
-          {s.step >= 5 ? '1 blocking finding · 2 agents concur' : 'Senior reviewer reads the transcript'}
+          {s.step >= 5 ? '1 blocking finding · 2 concur' : 'Senior reviewer reads the transcript'}
         </p>
       </div>
       <span className="sw-stamp" data-on={s.step >= 5 || undefined}>
-        <Roll variant="fade">{s.step >= 5 ? 'CHANGES REQUESTED' : 'IN REVIEW'}</Roll>
+        <States
+          value={s.step >= 5 ? 'changes' : 'review'}
+          states={{ review: 'IN REVIEW', changes: 'CHANGES REQUESTED' }}
+        />
       </span>
     </div>
   )

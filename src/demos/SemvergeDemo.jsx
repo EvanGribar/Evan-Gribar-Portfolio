@@ -1,5 +1,6 @@
 import { Stage } from '../stageshow/kit/stage'
 import { Roll } from '../stageshow/kit/motion/Roll'
+import { States } from '../stageshow/kit/motion/States'
 import { Check } from '../stageshow/kit/parts/Check'
 import { Icon } from '../stageshow/kit/parts/Icon'
 import { stageLook } from './look'
@@ -47,7 +48,10 @@ function State({ published }) {
   return (
     <span className="sv-state" data-done={published || undefined}>
       <i />
-      <Roll variant="fade">{published ? 'RELEASED' : 'RUNNING'}</Roll>
+      <States
+        value={published ? 'released' : 'running'}
+        states={{ running: 'RUNNING', released: 'RELEASED' }}
+      />
     </span>
   )
 }
@@ -104,7 +108,7 @@ function Version({ s }) {
         <span className="sv-muted">NEXT RELEASE</span>
         <Roll className="sv-vnum">{s.version}</Roll>
         <span className="sv-bump">
-          <Roll variant="fade">{s.step >= 2 ? 'MINOR + PATCH' : 'RESOLVING'}</Roll>
+          <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR + PATCH' }} align="start" />
         </span>
       </div>
       <ul className="sv-checks">
@@ -129,7 +133,7 @@ function Publish({ s }) {
         </span>
         <div className="sv-result-copy">
           <strong>
-            <Roll variant="fade">{s.published ? 'Release published' : 'Ready to ship'}</Roll>
+            <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready to ship', published: 'Release published' }} align="start" />
           </strong>
           <span>{s.published ? 'v0.1.3 · tag + notes' : 'Tag, notes and checks'}</span>
         </div>
@@ -141,7 +145,11 @@ function Publish({ s }) {
         data-busy={s.publishing || undefined}
         data-done={s.published || undefined}
       >
-        <Roll variant="fade">{s.published ? 'View release' : s.publishing ? 'Publishing' : 'Publish release'}</Roll>
+        <States
+          className="sv-btn-label"
+          value={s.published ? 'published' : s.publishing ? 'publishing' : 'publish'}
+          states={{ publish: 'Publish release', publishing: 'Publishing', published: 'View release' }}
+        />
         <span className="sv-btn-icon" data-shown={s.published || undefined}>
           <Icon name="external" size={12} />
         </span>
@@ -196,7 +204,7 @@ export default function SemvergeDemo() {
                   <span className="sv-muted">NEXT RELEASE</span>
                   <Roll className="sv-vnum">{s.version}</Roll>
                   <span className="sv-bump">
-                    <Roll variant="fade">{s.step >= 2 ? 'MINOR + PATCH' : 'RESOLVING'}</Roll>
+                    <States value={s.step >= 2 ? 'bump' : 'resolving'} states={{ resolving: 'RESOLVING', bump: 'MINOR + PATCH' }} align="start" />
                   </span>
                 </div>
                 <ul className="sv-checks">
@@ -215,7 +223,7 @@ export default function SemvergeDemo() {
                   </span>
                   <div className="sv-result-copy">
                     <strong>
-                      <Roll variant="fade">{s.published ? 'Release published' : 'Ready to ship'}</Roll>
+                      <States value={s.published ? 'published' : 'ready'} states={{ ready: 'Ready to ship', published: 'Release published' }} align="start" />
                     </strong>
                     <span>{s.published ? 'v0.1.3 · tag + notes' : 'Tag, notes and checks'}</span>
                   </div>
@@ -227,7 +235,11 @@ export default function SemvergeDemo() {
                   data-busy={s.publishing || undefined}
                   data-done={s.published || undefined}
                 >
-                  <Roll variant="fade">{s.published ? 'View release' : s.publishing ? 'Publishing' : 'Publish release'}</Roll>
+                  <States
+          className="sv-btn-label"
+          value={s.published ? 'published' : s.publishing ? 'publishing' : 'publish'}
+          states={{ publish: 'Publish release', publishing: 'Publishing', published: 'View release' }}
+        />
                   <span className="sv-btn-icon" data-shown={s.published || undefined}>
                     <Icon name="external" size={12} />
                   </span>

@@ -376,6 +376,11 @@
   opacity: 1;
 }
 
+/* States holds the largest label in one slot, so no state can be clipped */
+.sv-btn-label {
+  min-width: 0;
+}
+
 /* SemVerge, phone-width composition: changes, then version and checks side by
    side, then the action. Not the wide board squeezed. */
 .sv--compact {
@@ -628,7 +633,14 @@
   color: var(--ss-text-faint);
 }
 
+.sw-line-top span {
+  min-width: 0;
+}
+
 .sw-line-top strong {
+  flex: none;
+  padding-left: 8px;
+  white-space: nowrap;
   color: var(--ss-text-strong);
   font-weight: 500;
 }
@@ -706,6 +718,7 @@
   line-height: 1.4;
   letter-spacing: 0.02em;
   color: var(--ss-text-faint);
+  overflow-wrap: anywhere;
 }
 
 .sw-stamp {

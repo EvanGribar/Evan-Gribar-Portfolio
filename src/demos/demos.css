@@ -1,0 +1,852 @@
+/* Product demos, built with the Stageshow kit. Every rule is scoped to its
+   own stage: the page's own classes never reach inside. */
+
+.project-visual.project-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    linear-gradient(rgba(244, 244, 240, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 244, 240, 0.035) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+}
+
+.demo-visual {
+  width: 100%;
+}
+
+.demo-sv .ss-stage,
+.demo-sw .ss-stage {
+  background: transparent;
+  color: var(--ss-text-strong);
+}
+
+/* Roll clips at its own line box: with a line-height of 1 the descenders of
+   Publishing, Merge held and Release published were cut. Give them room. */
+.demo-sv .ss-roll,
+.demo-sw .ss-roll {
+  line-height: 1.35;
+}
+
+/* ---------------------------------------------------------------- SemVerge */
+
+.sv {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 28px;
+}
+
+.sv-top,
+.sw-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--ss-mono);
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.sv-word,
+.sw-word {
+  font-family: var(--ss-sans, var(--ss-font));
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.sv-word span,
+.sw-word span {
+  color: var(--ss-text-faint);
+  font-weight: 400;
+}
+
+.sv-state,
+.sw-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ss-text-faint);
+  font-size: 9.5px;
+}
+
+.sv-state i,
+.sw-state i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ss-text-faint);
+  transition: background 0.4s ease;
+}
+
+.sv-state[data-done] i,
+.sw-state[data-done] i {
+  background: var(--ss-text-strong);
+}
+
+.sv-state[data-done],
+.sw-state[data-done] {
+  color: var(--ss-text-strong);
+}
+
+.sv-sub,
+.sw-sub {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--ss-line);
+  font-family: var(--ss-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  color: var(--ss-text);
+  line-height: 1.3;
+}
+
+.sv-run,
+.sw-run {
+  margin-left: auto;
+  color: var(--ss-text-faint);
+}
+
+.sv-faint,
+.sw-faint {
+  color: var(--ss-text-faint);
+}
+
+.sv-board {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr 0.92fr;
+  gap: 22px;
+  padding-top: 22px;
+  min-height: 0;
+}
+
+.sv-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-right: 22px;
+  border-right: 1px solid var(--ss-line);
+}
+
+.sv-col:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.sv-label,
+.sw-label {
+  margin: 0;
+  font-family: var(--ss-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--ss-text-faint);
+}
+
+.sv-label b,
+.sw-label b {
+  color: var(--ss-text-strong);
+  font-weight: 400;
+  margin-right: 7px;
+}
+
+.sv-changes .sv-label,
+.sv-version-col .sv-label,
+.sv-publish .sv-label {
+  margin-bottom: 20px;
+}
+
+.sv-change-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sv-change {
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--ss-line-faint);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sv-change + .sv-change {
+  padding-top: 13px;
+}
+
+.sv-change[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.sv-change-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--ss-text-faint);
+}
+
+.sv-kind {
+  padding: 2px 5px;
+  border: 1px solid var(--ss-line);
+  border-radius: 2px;
+  font-size: 8.5px;
+  color: var(--ss-text);
+  white-space: nowrap;
+}
+
+.sv-change p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  color: var(--ss-text-strong);
+  overflow-wrap: anywhere;
+}
+
+.sv-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: auto 0 0;
+  padding-top: 16px;
+  font-family: var(--ss-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+  color: var(--ss-text);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sv-note[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.sv-version {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sv-muted {
+  font-family: var(--ss-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  color: var(--ss-text-faint);
+}
+
+.sv-vnum {
+  font-family: var(--ss-mono);
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  color: var(--ss-text-strong);
+}
+
+.sv-bump {
+  min-height: 12px;
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--ss-text);
+}
+
+.sv-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto 0 0;
+  padding: 16px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--ss-line-faint);
+}
+
+.sv-checks li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--ss-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+  color: var(--ss-text-faint);
+  transition: color 0.45s ease;
+}
+
+.sv-checks li[data-on] {
+  color: var(--ss-text-strong);
+}
+
+.sv-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sv-result-mark {
+  display: inline-flex;
+  flex: none;
+  padding-top: 1px;
+}
+
+.sv-result-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sv-result-copy strong {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ss-text-strong);
+}
+
+.sv-result-copy span {
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  line-height: 1.45;
+  color: var(--ss-text-faint);
+}
+
+.sv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  height: 38px;
+  margin-top: auto;
+  padding: 0 10px;
+  border: 1px solid var(--ss-text-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ss-text-strong);
+  font-family: var(--ss-mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.12s ease;
+}
+
+.sv-btn[data-hover] {
+  background: var(--ss-text-strong);
+  color: #0a0a0a;
+}
+
+.sv-btn[data-pressed] {
+  transform: translateY(1px);
+}
+
+.sv-btn[data-busy] {
+  border-color: var(--ss-line);
+  color: var(--ss-text);
+}
+
+.sv-btn[data-done] {
+  border-color: var(--ss-line);
+  color: var(--ss-text);
+}
+
+.sv-btn-icon {
+  display: inline-flex;
+  justify-content: center;
+  width: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sv-btn-icon[data-shown] {
+  opacity: 1;
+}
+
+/* States holds the largest label in one slot, so no state can be clipped */
+.sv-btn-label {
+  min-width: 0;
+}
+
+/* SemVerge, phone-width composition: changes, then version and checks side by
+   side, then the action. Not the wide board squeezed. */
+.sv--compact {
+  padding: 20px;
+}
+
+.sv--compact .sv-sub {
+  margin-top: 12px;
+  padding-bottom: 12px;
+}
+
+.sv-c-changes {
+  margin-top: 18px;
+}
+
+.sv-c-changes .sv-label {
+  margin-bottom: 14px;
+}
+
+.sv-c-changes .sv-change p {
+  font-size: 13px;
+}
+
+.sv--compact .sv-label,
+.sw--compact .sw-label {
+  font-size: 10px;
+}
+
+.sv-c-version {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ss-line);
+}
+
+.sv-c-version .sv-vnum {
+  font-size: 30px;
+}
+
+.sv-c-version .sv-checks {
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+  justify-content: center;
+  gap: 9px;
+}
+
+.sv-c-publish {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.sv-c-publish .sv-btn {
+  margin-top: 0;
+  height: 42px;
+}
+
+/* ------------------------------------------------------------ Swarm Review */
+
+.sw {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px;
+}
+
+.sw-pr {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 15px 0 16px;
+  border-bottom: 1px solid var(--ss-line);
+}
+
+.sw-pr-num {
+  flex: none;
+  font-family: var(--ss-mono);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: var(--ss-text-faint);
+}
+
+.sw-pr-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.sw-pr-copy strong {
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ss-text-strong);
+}
+
+.sw-pr-copy span {
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  color: var(--ss-text-faint);
+}
+
+.sw-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 212px minmax(0, 1fr);
+  gap: 24px;
+  min-height: 0;
+  padding-top: 18px;
+}
+
+.sw-agents {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: 22px;
+  border-right: 1px solid var(--ss-line);
+}
+
+.sw-agents .sw-label {
+  margin-bottom: 8px;
+}
+
+.sw-agent {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--ss-line-faint);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.55s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.55s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sw-agent[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.sw-agent b {
+  font-family: var(--ss-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ss-text-strong);
+}
+
+.sw-agent-role {
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: var(--ss-text-faint);
+  white-space: nowrap;
+}
+
+.sw-agent-find {
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.01em;
+  color: var(--ss-text-faint);
+  white-space: nowrap;
+}
+
+.sw-agent-find[data-found] {
+  color: var(--ss-text);
+}
+
+.sw-agent-find[data-blocking] {
+  color: var(--ss-text-strong);
+}
+
+.sw-agents-foot {
+  margin: auto 0 0;
+  padding-top: 14px;
+  font-family: var(--ss-mono);
+  font-size: 8.5px;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  color: var(--ss-text-faint);
+}
+
+.sw-debate {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.sw-debate .sw-label {
+  margin-bottom: 8px;
+}
+
+.sw-debate-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.sw-skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sw-skeleton[data-on] {
+  opacity: 1;
+}
+
+.sw-skeleton > div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.sw-line {
+  padding: 12px 0 14px;
+  border-bottom: 1px solid var(--ss-line-faint);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.55s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.55s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sw-line[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.sw-line-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--ss-text-faint);
+}
+
+.sw-line-top span {
+  min-width: 0;
+}
+
+.sw-line-top strong {
+  flex: none;
+  padding-left: 8px;
+  white-space: nowrap;
+  color: var(--ss-text-strong);
+  font-weight: 500;
+}
+
+.sw-line p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ss-text);
+  overflow-wrap: anywhere;
+}
+
+.sw-round {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--ss-line);
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--ss-text-faint);
+}
+
+.sw-round strong {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--ss-text-strong);
+}
+
+.sw-decision {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 15px 18px;
+  border: 1px solid var(--ss-line);
+  border-radius: 3px;
+  background: rgba(244, 244, 240, 0.025);
+  transition: border-color 0.5s ease, background 0.5s ease;
+}
+
+.sw-decision[data-done] {
+  border-color: var(--ss-line);
+  background: rgba(244, 244, 240, 0.05);
+}
+
+.sw-verdict-wrap {
+  min-width: 0;
+}
+
+.sw-verdict-wrap .sw-label {
+  margin-bottom: 8px;
+}
+
+.sw-verdict {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.35;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  color: var(--ss-text-strong);
+}
+
+.sw-decision-meta {
+  margin: 7px 0 0;
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--ss-text-faint);
+  overflow-wrap: anywhere;
+}
+
+.sw-stamp {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 152px;
+  padding: 8px 11px;
+  border: 1px solid var(--ss-line);
+  border-radius: 2px;
+  font-family: var(--ss-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  color: var(--ss-text-faint);
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+
+.sw-stamp[data-on] {
+  border-color: var(--ss-text-strong);
+  color: var(--ss-text-strong);
+}
+
+/* Swarm Review, phone-width composition: agents as a two-up grid, one
+   debate thread, the decision. */
+.sw--compact {
+  padding: 20px;
+}
+
+.sw--compact .sw-sub {
+  margin-top: 12px;
+  padding-bottom: 12px;
+}
+
+.sw--compact .sw-pr {
+  padding: 12px 0 13px;
+}
+
+.sw--compact .sw-pr-copy strong {
+  font-size: 14px;
+}
+
+.sw-c-agents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 14px 0 4px;
+}
+
+.sw--compact .sw-agent {
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  padding: 9px 10px;
+  border: 1px solid var(--ss-line-faint);
+  border-radius: 2px;
+}
+
+.sw--compact .sw-agent b {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.sw--compact .sw-agent-role {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 9.5px;
+}
+
+.sw--compact .sw-agent-find {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  white-space: nowrap;
+  text-align: right;
+  line-height: 1.35;
+}
+
+.sw--compact .sw-debate {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ss-line);
+}
+
+.sw--compact .sw-line {
+  padding: 10px 0 11px;
+}
+
+.sw--compact .sw-round {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+/* The verdict takes the full width under its label, with the stamp in the
+   top-right corner: side by side, "Awaiting debate" ran into the stamp. */
+.sw--compact .sw-decision {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 6px 12px;
+  margin-top: 14px;
+  padding: 13px 14px;
+}
+
+.sw--compact .sw-verdict-wrap {
+  display: contents;
+}
+
+.sw--compact .sw-verdict-wrap .sw-label {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+}
+
+.sw--compact .sw-verdict {
+  grid-column: 1 / -1;
+  font-size: 24px;
+}
+
+.sw--compact .sw-decision-meta {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.sw--compact .sw-stamp {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  padding: 7px 9px;
+  font-size: 8.5px;
+}

@@ -1,24 +1,42 @@
 {
   "schemaVersion": 2,
   "mode": "single",
-  "version": "1.1.0",
-  "generatedAt": "2026-08-04T21:24:22.189Z",
+  "version": "1.1.1",
+  "channel": "stable",
+  "promotion": false,
+  "generatedAt": "2026-11-07T02:34:16.294Z",
   "packages": [
     {
       "id": "evan-gribar-portfolio",
       "name": "evan-gribar-portfolio",
       "directory": "",
       "ecosystem": "node",
-      "previousVersion": "1.0.0",
-      "version": "1.1.0",
-      "bump": "minor",
+      "previousVersion": "1.1.0",
+      "version": "1.1.1",
+      "bump": "patch",
+      "channel": "stable",
+      "promotion": false,
       "changelog": "CHANGELOG.md",
       "customerNotes": "RELEASE_NOTES.md",
       "private": true,
       "releaseable": false,
-      "dependencyUpdate": false
+      "dependencyUpdate": false,
+      "reasons": [
+        "direct-change"
+      ],
+      "directChanges": [
+        "fix: restore Codex authoring skills and add portfolio CI",
+        "content: focus portfolio on actively maintained work",
+        "docs: remove retired Swarm Review from featured projects",
+        "chore: pin SemVerge release workflow to v0",
+        "Replace the project visuals with animated product demos",
+        "Focus portfolio on demonstrated work and remove tracked clutter"
+      ],
+      "dependencies": [],
+      "dependencyTypes": {}
     }
   ],
+  "unchangedPackages": [],
   "readiness": {
     "passed": true,
     "missingLabels": [],
@@ -26,5 +44,19 @@
     "failedCommands": [],
     "missingTasks": [],
     "requestedTasks": []
-  }
+  },
+  "communicationQuality": [
+    {
+      "artifact": "customer-notes",
+      "mode": "warn",
+      "passed": true,
+      "findings": []
+    },
+    {
+      "artifact": "announcement",
+      "mode": "warn",
+      "passed": true,
+      "findings": []
+    }
+  ]
 }

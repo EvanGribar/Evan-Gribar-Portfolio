@@ -1,8 +1,9 @@
-# SemVerge release announcement: 1.1.0
+# Restore Codex authoring skills and add portfolio CI
 
-SemVerge 1.1.0 includes:
+restore Codex authoring skills and add portfolio CI.
 
-- Add homepage to package.json and cleanup
-- verify release automation with SemVerge v0.1.7
-- publish verified release status
-- make the release workflow explicit
+## Highlights
+
+- restore Codex authoring skills and add portfolio CI.
+
+SemVerge 1.1.1 is available now.

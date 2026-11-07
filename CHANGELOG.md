@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.1] - 2026-11-07
+
+### Bug Fixes
+
+- restore Codex authoring skills and add portfolio CI
+
+### Internal Changes
+
+- focus portfolio on actively maintained work
+- remove retired Swarm Review from featured projects
+- [pin SemVerge release workflow to v0](https://github.com/EvanGribar/Evan-Gribar-Portfolio/pull/16) (#16)
+- [Replace the project visuals with animated product demos](https://github.com/EvanGribar/Evan-Gribar-Portfolio/pull/17) (#17)
+- [Focus portfolio on demonstrated work and remove tracked clutter](https://github.com/EvanGribar/Evan-Gribar-Portfolio/pull/18) (#18)
+
 ## [1.1.0] - 2026-08-04
 
 ### Features

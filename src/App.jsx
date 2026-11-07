@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import SemvergeDemo from './demos/SemvergeDemo'
-import SwarmReviewDemo from './demos/SwarmReviewDemo'
 
 const projects = [
   {
@@ -13,16 +12,6 @@ const projects = [
     link: 'https://github.com/EvanGribar/semverge',
     linkLabel: 'Explore SemVerge',
     visual: 'release',
-  },
-  {
-    number: '02',
-    title: 'Swarm Review',
-    eyebrow: 'GitHub Action · Open source',
-    description: 'A GitHub Action that runs independent AI reviews of a pull request, then combines findings into one review. Debate is optional.',
-    details: ['TypeScript', 'GitHub Actions', 'Code review', 'Cost controls'],
-    link: 'https://github.com/EvanGribar/Swarm-Review',
-    linkLabel: 'Explore Swarm Review',
-    visual: 'swarm',
   },
 ]
 
@@ -75,8 +64,8 @@ export default function App() {
         <section className="work-section frame" id="work">
           <div className="section-intro">
             <p className="section-label">Selected work / 2026</p>
-            <h2>Selected<br /><em>projects.</em></h2>
-            <p className="section-summary">Two open-source developer tools exploring safer releases and more useful pull request reviews.</p>
+            <h2>Selected<br /><em>work.</em></h2>
+            <p className="section-summary">A release automation project, alongside hands-on experience in business operations and technology.</p>
           </div>
           <div className="project-list">
             {projects.map((project) => (
@@ -87,7 +76,7 @@ export default function App() {
                   <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                   <a className="text-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel} <Arrow diagonal /></a>
                 </div>
-                <div className="project-visual project-demo" aria-label={`Illustrative demonstration of ${project.title}`}><span className="sr-only">Illustrative demonstration, not a live production run.</span>{project.visual === 'release' ? <SemvergeDemo /> : <SwarmReviewDemo />}</div>
+                <div className="project-visual project-demo" aria-label={`Illustrative demonstration of ${project.title}`}><span className="sr-only">Illustrative demonstration, not a live production run.</span><SemvergeDemo /></div>
               </article>
             ))}
           </div>

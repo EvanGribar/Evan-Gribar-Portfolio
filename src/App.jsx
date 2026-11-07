@@ -8,7 +8,7 @@ const projects = [
     number: '01',
     title: 'SemVerge',
     eyebrow: 'Release automation · Open source',
-    description: 'A GitHub Action that turns change detection into a repeatable release path, from version selection and readiness checks to release notes and publishing.',
+    description: 'A GitHub Action for version selection, release readiness checks, release notes, and publication workflows.',
     details: ['TypeScript', 'GitHub Action', 'Semantic versioning', 'Deterministic releases'],
     link: 'https://github.com/EvanGribar/semverge',
     linkLabel: 'Explore SemVerge',
@@ -18,20 +18,12 @@ const projects = [
     number: '02',
     title: 'Swarm Review',
     eyebrow: 'GitHub Action · Open source',
-    description: 'A multi-agent code review system where specialized reviewers inspect a pull request, debate their findings, and deliver one principal-level decision.',
-    details: ['Multi-agent review', 'Structured debate', 'GitHub Actions', 'Provider agnostic'],
+    description: 'A GitHub Action that runs independent AI reviews of a pull request, then combines findings into one review. Debate is optional.',
+    details: ['TypeScript', 'GitHub Actions', 'Code review', 'Cost controls'],
     link: 'https://github.com/EvanGribar/Swarm-Review',
     linkLabel: 'Explore Swarm Review',
     visual: 'swarm',
   },
-]
-
-const credentials = [
-  ['2026', 'Lean Six Sigma White Belt', 'CSSC'],
-  ['2026', 'Project Management Fundamentals', 'IBM'],
-  ['2026', 'Data Fundamentals', 'IBM'],
-  ['2026', 'Enterprise Design Thinking Practitioner', 'IBM'],
-  ['2026', 'Reporting Certification', 'HubSpot'],
 ]
 
 function Arrow({ diagonal = false }) {
@@ -66,25 +58,25 @@ export default function App() {
 
         <div className="hero-content frame">
           <motion.div className="hero-kicker" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-            <span>Product systems / AI tooling</span><span>Pittsburgh · Tuscaloosa</span>
+            <span>Product · Technology · Operations</span><span>Pittsburgh, PA</span>
           </motion.div>
           <motion.h1 initial={reduceMotion ? false : { opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
             <span>Evan</span><span className="hero-name-shift">Gribar<span className="hero-period">.</span></span>
           </motion.h1>
           <div className="hero-bottom">
-            <p>I build clear systems for messy problems across product, operations, and AI-assisted software.</p>
+            <p>I'm an MIS student interested in product management, technology consulting, and building useful software.</p>
             <a className="round-link" href="#work" aria-label="View selected work"><Arrow /></a>
           </div>
         </div>
-        <div className="hero-ticker" aria-hidden="true"><div>PRODUCT THINKING · SYSTEM DESIGN · OPERATIONAL CLARITY · PRODUCT THINKING · SYSTEM DESIGN · OPERATIONAL CLARITY ·</div></div>
+        <div className="hero-ticker" aria-hidden="true"><div>PRODUCT · ENGINEERING · OPERATIONS · PRODUCT · ENGINEERING · OPERATIONS ·</div></div>
       </header>
 
       <main id="main">
         <section className="work-section frame" id="work">
           <div className="section-intro">
             <p className="section-label">Selected work / 2026</p>
-            <h2>Built to make<br />judgment <em>visible.</em></h2>
-            <p className="section-summary">Two open-source systems exploring how software teams reason about requirements, evidence, and review quality.</p>
+            <h2>Selected<br /><em>projects.</em></h2>
+            <p className="section-summary">Two open-source developer tools exploring safer releases and more useful pull request reviews.</p>
           </div>
           <div className="project-list">
             {projects.map((project) => (
@@ -95,7 +87,7 @@ export default function App() {
                   <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                   <a className="text-link" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel} <Arrow diagonal /></a>
                 </div>
-                <div className="project-visual project-demo">{project.visual === 'release' ? <SemvergeDemo /> : <SwarmReviewDemo />}</div>
+                <div className="project-visual project-demo" aria-label={`Illustrative demonstration of ${project.title}`}><span className="sr-only">Illustrative demonstration, not a live production run.</span>{project.visual === 'release' ? <SemvergeDemo /> : <SwarmReviewDemo />}</div>
               </article>
             ))}
           </div>
@@ -104,30 +96,24 @@ export default function App() {
         <section className="about-section" id="about">
           <div className="frame about-grid">
             <div className="about-statement">
-              <p className="section-label">About / approach</p>
-              <h2>Business context.<br />Technical curiosity.<br /><em>Useful outcomes.</em></h2>
+              <p className="section-label">About</p>
+              <h2>Business and technology.<br /><em>In practice.</em></h2>
             </div>
             <div className="about-copy">
-              <p className="about-lead">I’m a Management Information Systems and Business Cyber Security student at The University of Alabama. I’m interested in the space between a requirement and the system that has to deliver it.</p>
-              <p>That means asking better questions, making the process legible, and shipping work that can be tested, not just presented.</p>
-              <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>B.S. Management Information Systems</span><span>Business Cyber Security · GPA 3.7</span><span>2025-2029</span></div></div>
-              <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Digital Operations &amp; Project Strategy Intern</span><span>North Huntingdon, Pennsylvania</span></div></div>
-              <div className="education-card"><span className="card-index">LDR / 01</span><div><strong>Million Dollar Band</strong><span>Manager</span><span>Logistics for a 400+ member organization</span></div></div>
+              <p className="about-lead">I study Management Information Systems and Business Cyber Security at The University of Alabama. I'm pursuing opportunities in product management and technology consulting.</p>
+              <p>Alongside coursework, I've supported instruction, improved business websites and operations, and worked on large-team logistics. My side projects help me learn how software is designed, tested, and shipped.</p>
+              <div className="education-card"><span className="card-index">EDU / 01</span><div><strong>The University of Alabama</strong><span>Management Information Systems · Business Cyber Security minor</span><span>2025–present · Planning to transfer to Pitt Business in Fall 2027</span></div></div>
+              <div className="education-card"><span className="card-index">EXP / 01</span><div><strong>Mystical Dream Travel</strong><span>Digital Operations &amp; Project Strategy Intern · Summer 2026</span><span>Website improvement, mobile experience, and business operations</span></div></div>
+              <div className="education-card"><span className="card-index">EXP / 02</span><div><strong>University of Alabama</strong><span>MIS 200 Teaching Assistant · Fall 2026</span><span>Supported coursework and assignment review for approximately 120 students</span></div></div>
+              <div className="education-card"><span className="card-index">LDR / 01</span><div><strong>Million Dollar Band</strong><span>Band Manager · 2025–2026</span><span>Logistics support for a 400+ member organization</span></div></div>
             </div>
-          </div>
-        </section>
-
-        <section className="credentials-section frame" aria-labelledby="credentials-title">
-          <div className="credentials-heading"><p className="section-label">Selected credentials</p><h2 id="credentials-title">Learning, applied.</h2></div>
-          <div className="credential-list">
-            {credentials.map(([year, title, issuer]) => <div className="credential-row" key={title}><span>{year}</span><strong>{title}</strong><span>{issuer}</span></div>)}
           </div>
         </section>
 
         <section className="contact-section" id="contact">
           <div className="frame contact-inner">
-            <p className="section-label">Contact / open to opportunities</p>
-            <h2>Have a problem worth solving?<br /><em>Let’s work through it.</em></h2>
+            <p className="section-label">Contact</p>
+            <h2>Interested in working together?<br /><em>Get in touch.</em></h2>
             <div className="contact-links">
               <a href="mailto:ewgribar@crimson.ua.edu">Email me <Arrow diagonal /></a>
               <a href="https://www.linkedin.com/in/evangribar/" target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>

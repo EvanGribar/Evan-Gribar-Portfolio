@@ -4,10 +4,9 @@ My portfolio with selected software projects and relevant experience.
 
 **Website:** https://evan-gribar-portfolio.vercel.app/
 
-The animated examples on the site illustrate how the projects work. They are **not live product runs** or evidence of external usage. See the underlying repositories for implementation and documentation:
+The animated project example is illustrative, **not a live product run** or evidence of external adoption. See the underlying repository for implementation and documentation:
 
 - [SemVerge](https://github.com/EvanGribar/semverge) — release automation for GitHub.
-- [Swarm Review](https://github.com/EvanGribar/Swarm-Review) — AI-assisted pull request review GitHub Action.
 
 ## Local development
 

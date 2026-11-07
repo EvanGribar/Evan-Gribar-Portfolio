@@ -25,3 +25,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Generated Vite cache
+.vite/
+# Duplicate authoring skill copies; the canonical kit stays under .claude/skills/
+.agents/
+.kiro/
+.openhands/

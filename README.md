@@ -23,4 +23,4 @@ npm run lint
 npm run build
 ```
 
-Deploy with the Vite preset on Vercel (output: `dist/`). A separate `npm run build:gh` command supports GitHub Pages. Visual demo source lives under `src/demos/` and `src/stageshow/`; developer authoring tools under `.claude/skills/` are not runtime dependencies.
+Deploy with the Vite preset on Vercel (output: `dist/`). A separate `npm run build:gh` command supports GitHub Pages. Visual demo source lives under `src/demos/` and `src/stageshow/`; authoring tools under `.agents/skills/` (Codex) and `.claude/skills/` (Claude) are not runtime dependencies.

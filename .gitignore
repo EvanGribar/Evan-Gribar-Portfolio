@@ -28,7 +28,6 @@ dist-ssr
 
 # Generated Vite cache
 .vite/
-# Duplicate authoring skill copies; the canonical kit stays under .claude/skills/
-.agents/
+# Unused duplicate authoring skill copies (Codex .agents and Claude .claude retained)
 .kiro/
 .openhands/
